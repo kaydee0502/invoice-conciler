@@ -1,0 +1,75 @@
+{
+  "_session_id": "5ffa97d8-738b-40c3-ba91-78e290521c1f",
+  "carrier": "sagar",
+  "contract_file": "sagar-roadlines.md",
+  "agreement_ref": "SRL/BFC/2025-08",
+  "term": {
+    "from": "2025-08-01",
+    "to": "2027-07-31",
+    "clause": "sagar-roadlines.md header (Term)"
+  },
+  "services_offered": {
+    "values": ["standard"],
+    "clause": "sagar-roadlines.md §2"
+  },
+  "derived_quantities": [],
+  "charges": [
+    {
+      "id": "weight_component",
+      "label": "Weight component",
+      "clause": "sagar-roadlines.md §1",
+      "quote": "a weight component of ₹6.00 per kg of billed weight",
+      "when": null,
+      "amount": {"mul": [{"const": 6.00}, {"field": "billed_weight_kg"}]}
+    },
+    {
+      "id": "distance_component",
+      "label": "Distance component",
+      "clause": "sagar-roadlines.md §1",
+      "quote": "a distance component of ₹2.00 per km of the booked lane distance",
+      "when": null,
+      "amount": {"mul": [{"const": 2.00}, {"field": "distance_km"}]}
+    },
+    {
+      "id": "cold_chain_premium",
+      "label": "Cold chain premium",
+      "clause": "sagar-roadlines.md §3",
+      "quote": "carry a premium of 20% on the freight charge (the sum of the weight and distance components)",
+      "when": {"field": "special_handling", "op": "contains", "value": "cold_chain"},
+      "amount": {
+        "percent": 20,
+        "of": {"add": [{"charge": "weight_component"}, {"charge": "distance_component"}]}
+      }
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": true,
+    "clause": "sagar-roadlines.md §1, §3"
+  },
+  "invoice_adjustments": [],
+  "document_rules": [
+    {
+      "id": "unmatched_lines_not_payable",
+      "rule": "An invoice line whose consignment-note (c-note) number cannot be matched to a Customer booking is not payable until reconciled.",
+      "clause": "sagar-roadlines.md §5"
+    },
+    {
+      "id": "credit_notes_permitted",
+      "rule": "The Carrier may issue credit notes correcting earlier invoices; each credit note references the original c-note number and the invoice it corrects.",
+      "clause": "sagar-roadlines.md §6"
+    },
+    {
+      "id": "credit_note_must_cover_full_correction",
+      "rule": "A credit note must cover the full corrected amount.",
+      "clause": "sagar-roadlines.md §6"
+    },
+    {
+      "id": "other",
+      "rule": "Payment is due 21 days from invoice date. Invoices are issued as trips are pooled, typically fortnightly.",
+      "value": 21,
+      "clause": "sagar-roadlines.md §4"
+    }
+  ],
+  "ambiguities": [],
+  "notes": "No ambiguities found: the contract fully and literally specifies the freight formula (₹6/kg weight component + ₹2/km distance component), the sole accessorial (20% cold-chain premium on the summed freight charge), and that only standard service is offered. special_handling values 'fragile' and 'residential' are named nowhere in the contract, so no charge attaches to them (this is not an ambiguity, simply an absence of a matching clause). No tiered rate card, minimum weight, or declared-value-based charge is present."
+}

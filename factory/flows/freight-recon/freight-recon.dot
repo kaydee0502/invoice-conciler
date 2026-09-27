@@ -1,0 +1,87 @@
+// factory/flows/freight-recon/freight-recon.dot
+// Freight billing reconciliation. Built stage by stage; see
+// .claude/skills/freight-reconcile/SKILL.md for the full pipeline.
+
+digraph freight_recon {
+  graph [label="Freight Reconciliation"]
+
+  start          [shape=Mdiamond]
+
+  ingest         [shape=box, runner=script, script="scripts/ingest.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="ingest_outputs",
+                  description="Parse every billing document into normalized lines; refuse on anything unaccounted for; record carrier-side anomalies."]
+
+  match          [shape=box, runner=script, script="scripts/match.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="match_outputs",
+                  description="Exact-ref match of every line to a shipment; record invoice-vs-shipment fact conflicts and near-miss hints."]
+
+  plan_contracts [shape=box, runner=script, script="scripts/plan_contracts.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="plan_outputs",
+                  description="Pair every carrier (billed or shipped) with exactly one contract; emit one fanout item per contract."]
+
+  specs_fanout   [runner=dynamic_fanout, source="contract_items", template="spec_branch",
+                  max_concurrent=3,
+                  description="One contract-spec subflow per contract, in parallel."]
+
+  spec_branch    [runner=subflow, flow="contract-spec",
+                  inputs="{carrier: item, contract_plan: contract_plan}", outputs="{rate_spec: rate_spec}",
+                  description="Dual extraction + behavioural diff (+ tie-break) -> one agreed rate spec."]
+
+  specs_join     [runner=join, reducer_script="scripts/collect_specs.py", summary_var="rate_specs",
+                  description="Record each agreed spec in rate-specs.json (a file: variables are capped at 16 KB)."]
+
+  check_specs    [shape=box, runner=script, script="scripts/check_specs.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="check_specs_outputs",
+                  description="Every planned carrier has an agreed spec for the right carrier that passes speccheck."]
+
+  price          [shape=box, runner=script, script="scripts/price.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="price_outputs",
+                  description="Expected amount per line from the agreed spec on the shipment record; rule-based dispositions; invoice-level findings."]
+
+  adjudicate     [shape=box, prompt_template="prompts/adjudicate.md", working_dir="{_run_artefact_dir}",
+                  output_schema="adjudicate_outputs", model="opus", permission_mode="auto",
+                  description="Only when price flagged lines for review: choose among each line's allowed dispositions. Never amounts."]
+
+  assemble       [shape=box, runner=script, script="scripts/assemble.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="assemble_outputs",
+                  description="Build reconciliation-report.json; refuse unless schema + invariants I1-I9 hold; index the memo items."]
+
+  plan_memos     [shape=box, runner=script, script="scripts/plan_memos.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="plan_memos_outputs",
+                  description="Batch the non-accept items per carrier with briefs listing the amounts each memo may quote."]
+
+  memos_fanout   [runner=dynamic_fanout, source="memo_batches", template="memo_branch", max_concurrent=3,
+                  description="One memo-batch subflow per batch, in parallel."]
+
+  memo_branch    [runner=subflow, flow="memo-batch", inputs="{batch_id: item, memo_plan: memo_plan}",
+                  description="Write memos, check them (one retry with feedback)."]
+
+  memos_join     [runner=join, reducer_script="scripts/count_memo_batches.py", summary_var="memo_batches_done",
+                  description="Wait for every memo batch (counting them); publish takes the batch dirs from the memo plan."]
+
+  publish        [shape=box, runner=script, script="scripts/publish.sh",
+                  working_dir="{_run_artefact_dir}", output_schema="publish_outputs",
+                  description="Memo set == non-accept items exactly; copy report + memos to run dir and publish dir; sha256 manifest."]
+
+  done           [shape=Msquare]
+
+  start          -> ingest
+  ingest         -> match
+  match          -> plan_contracts
+  plan_contracts -> check_specs   [condition="extract_count == 0", label="every spec served from cache"]
+  plan_contracts -> specs_fanout  [condition="extract_count > 0",  label="contracts to extract"]
+  specs_fanout   -> spec_branch
+  spec_branch    -> specs_join
+  specs_join     -> check_specs
+  check_specs    -> price
+  price          -> assemble      [condition="review_count == 0", label="rules settled every line"]
+  price          -> adjudicate    [condition="review_count > 0",  label="lines need judgement"]
+  adjudicate     -> assemble
+  assemble       -> plan_memos
+  plan_memos     -> publish       [condition="memo_item_count == 0", label="nothing to write"]
+  plan_memos     -> memos_fanout  [condition="memo_item_count > 0",  label="memos to write"]
+  memos_fanout   -> memo_branch
+  memo_branch    -> memos_join
+  memos_join     -> publish
+  publish        -> done
+}

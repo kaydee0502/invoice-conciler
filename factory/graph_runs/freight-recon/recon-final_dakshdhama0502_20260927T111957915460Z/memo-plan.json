@@ -1,0 +1,37 @@
+{
+  "_session_id": "script:plan_memos",
+  "stage": "plan_memos",
+  "item_count": 17,
+  "batches": [
+    {
+      "batch_id": 1,
+      "carrier": "alpine",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-briefs/00001-alpine.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-batches/00001-alpine",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/alpine-express.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 3
+    },
+    {
+      "batch_id": 2,
+      "carrier": "falcon",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-briefs/00002-falcon.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-batches/00002-falcon",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/falcon-freight.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 6
+    },
+    {
+      "batch_id": 3,
+      "carrier": "sagar",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-briefs/00003-sagar.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-batches/00003-sagar",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/sagar-roadlines.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 8
+    }
+  ]
+}

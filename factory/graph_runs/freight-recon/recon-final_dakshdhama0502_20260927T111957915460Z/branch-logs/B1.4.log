@@ -1,0 +1,4 @@
+[11:23:46 B1_4] spawned write_memos 59e382eb-49ac-4707-97bb-a8d3a4f27802
+[11:24:26 B1_4] write_memos failed validation; sending feedback to the live worker
+[11:24:27 B1_4] write_memos worker died; respawning once
+[11:25:03 B1_4] write_memos failed validation twice: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json: schema violation: batch_id: 1 is not of type 'string'

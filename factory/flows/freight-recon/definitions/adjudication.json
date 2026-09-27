@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adjudication decisions for lines under review",
+  "type": "object",
+  "required": ["_session_id", "decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["line_key", "disposition", "justification", "contract_clause"],
+        "additionalProperties": false,
+        "properties": {
+          "line_key": { "type": "string", "minLength": 1 },
+          "disposition": { "enum": ["accept", "dispute", "escalate"] },
+          "justification": { "type": "string", "minLength": 20 },
+          "contract_clause": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

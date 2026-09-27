@@ -1,0 +1,25 @@
+{
+  "_session_id": "script:check_specs",
+  "stage": "check_specs",
+  "carriers": [
+    "alpine",
+    "falcon",
+    "sagar"
+  ],
+  "rate_specs": {
+    "alpine": "/home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T112004263048Z_B1.1/rate-spec.json",
+    "falcon": "/home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T112005037694Z_B1.2/rate-spec.json",
+    "sagar": "/home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T112005916041Z_B1.3/rate-spec.json"
+  },
+  "from_cache": [],
+  "extracted": [
+    "alpine",
+    "falcon",
+    "sagar"
+  ],
+  "stored_in_cache": {
+    "alpine": "/home/dax/stage2-kit/factory/cache/rate-specs/alpine-a9eee91af391f2ade6aa.json",
+    "falcon": "/home/dax/stage2-kit/factory/cache/rate-specs/falcon-b45248af265bd80c158f.json",
+    "sagar": "/home/dax/stage2-kit/factory/cache/rate-specs/sagar-6013dcba752d5cf7a6dc.json"
+  }
+}

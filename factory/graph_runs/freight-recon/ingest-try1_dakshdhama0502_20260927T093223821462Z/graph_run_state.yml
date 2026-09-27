@@ -1,0 +1,116 @@
+metadata:
+  run_id: abb05360-8619-4310-bc4f-4ebcfe0f2d3e
+  userid: dakshdhama0502
+  orchestrator_session_id: fecd768d-f0fd-4851-af68-ab69b2fedcaf
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: freight-recon
+  flow_dot: factory/flows/freight-recon/freight-recon.dot
+  flow_dir: factory/flows/freight-recon
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: ingest-try1
+  timestamp: 20260927T093223821462Z
+  started_at: '2026-09-27T09:32:24Z'
+  completed_at: '2026-09-27T09:32:24Z'
+  state: completed
+  parent_run: null
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:32:24Z'
+      completed_at: '2026-09-27T09:32:24Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    ingest:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:32:24Z'
+      completed_at: '2026-09-27T09:32:24Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:32:24Z'
+      completed_at: '2026-09-27T09:32:24Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T093223821462Z
+      _run_descriptor: ingest-try1
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/ingest-try1_dakshdhama0502_20260927T093223821462Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/ingest-try1_dakshdhama0502_20260927T093223821462Z/ingest.json
+    parent_node: null
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T093223821462Z
+      _run_descriptor: ingest-try1
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/ingest-try1_dakshdhama0502_20260927T093223821462Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      ingest: null
+    next_child: 0
+events:
+- t: '2026-09-27T09:32:24Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T09:32:24Z'
+  kind: node_entered
+  node: ingest
+- t: '2026-09-27T09:32:24Z'
+  kind: script_node_ran
+  node: ingest
+  exit_code: 0
+- t: '2026-09-27T09:32:24Z'
+  kind: validation_passed
+  node: ingest
+  agent_session_id: null
+- t: '2026-09-27T09:32:24Z'
+  kind: run_completed

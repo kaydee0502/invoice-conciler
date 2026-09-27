@@ -1,0 +1,37 @@
+{
+  "_session_id": "script:plan_memos",
+  "stage": "plan_memos",
+  "item_count": 17,
+  "batches": [
+    {
+      "batch_id": "alpine-1",
+      "carrier": "alpine",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/alpine-1.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/alpine-1",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/alpine-express.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 3
+    },
+    {
+      "batch_id": "falcon-1",
+      "carrier": "falcon",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/falcon-1.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/falcon-1",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/falcon-freight.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 6
+    },
+    {
+      "batch_id": "sagar-1",
+      "carrier": "sagar",
+      "brief_path": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/sagar-1.json",
+      "memos_dir": "/home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/sagar-1",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/sagar-roadlines.md",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "item_count": 8
+    }
+  ]
+}

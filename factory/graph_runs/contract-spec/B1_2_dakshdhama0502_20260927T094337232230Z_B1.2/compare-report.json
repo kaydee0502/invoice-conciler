@@ -1,0 +1,18 @@
+{
+  "_session_id": "script:specdiff",
+  "agreed": true,
+  "chosen": "spec_a",
+  "probe_count": 284,
+  "static_problems": {
+    "spec_a": [],
+    "spec_b": []
+  },
+  "pairs": {
+    "spec_a~spec_b": []
+  },
+  "carrier": "falcon",
+  "candidates": [
+    "spec_a",
+    "spec_b"
+  ]
+}

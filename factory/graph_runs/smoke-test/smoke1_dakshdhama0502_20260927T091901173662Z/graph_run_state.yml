@@ -1,0 +1,161 @@
+metadata:
+  run_id: fc5adc3b-d9d5-4583-9d74-3a04434a2c48
+  userid: dakshdhama0502
+  orchestrator_session_id: fecd768d-f0fd-4851-af68-ab69b2fedcaf
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: smoke-test
+  flow_dot: factory/flows/smoke-test/smoke-test.dot
+  flow_dir: factory/flows/smoke-test
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: smoke1
+  timestamp: 20260927T091901173662Z
+  started_at: '2026-09-27T09:19:01Z'
+  completed_at: '2026-09-27T09:19:55Z'
+  state: completed
+  parent_run: null
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:19:01Z'
+      completed_at: '2026-09-27T09:19:01Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    research:
+      status: done
+      agent_id: null
+      agent_session_id: 17ec4699-71ea-4af9-baa7-4716c1410575
+      started_at: '2026-09-27T09:19:01Z'
+      completed_at: '2026-09-27T09:19:27Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T09:19:27Z'
+      validation_feedback: null
+      summary: Produced a 5-bullet research brief on why freight invoices need reconciliation
+        against rate contracts and wrote it to research-brief.json.
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 842
+        cache_read_input_tokens: 131604
+        cache_creation_input_tokens: 21500
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    summarise:
+      status: done
+      agent_id: null
+      agent_session_id: 5461b0e6-8b3e-4b2a-87ea-893c7909e277
+      started_at: '2026-09-27T09:19:27Z'
+      completed_at: '2026-09-27T09:19:54Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T09:19:54Z'
+      validation_feedback: null
+      summary: Read research-brief.json and wrote a 3-4 sentence single-paragraph
+        summary of freight invoice reconciliation to summary.json.
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 806
+        cache_read_input_tokens: 133935
+        cache_creation_input_tokens: 16526
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:19:55Z'
+      completed_at: '2026-09-27T09:19:55Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage:
+  input_tokens: 46
+  output_tokens: 8500
+  cache_read_input_tokens: 1370338
+  cache_creation_input_tokens: 51327
+  reasoning_tokens: 0
+  turns: 23
+  model: claude-opus-5-5
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T091901173662Z
+      _run_descriptor: smoke1
+      _flow_stem: smoke-test
+      _run_artefact_dir: factory/graph_runs/smoke-test/smoke1_dakshdhama0502_20260927T091901173662Z
+      _supervision: afk
+      _supervision_instructions: ''
+      research_topic: Why freight invoices need reconciliation against rate contracts
+      research_brief: /home/dax/stage2-kit/factory/graph_runs/smoke-test/smoke1_dakshdhama0502_20260927T091901173662Z/research-brief.json
+      summary: /home/dax/stage2-kit/factory/graph_runs/smoke-test/smoke1_dakshdhama0502_20260927T091901173662Z/summary.json
+    parent_node: null
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T091901173662Z
+      _run_descriptor: smoke1
+      _flow_stem: smoke-test
+      _run_artefact_dir: factory/graph_runs/smoke-test/smoke1_dakshdhama0502_20260927T091901173662Z
+      _supervision: afk
+      _supervision_instructions: ''
+      research_topic: null
+      research_brief: null
+      summary: null
+    next_child: 0
+events:
+- t: '2026-09-27T09:19:01Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T09:19:01Z'
+  kind: node_entered
+  node: research
+- t: '2026-09-27T09:19:27Z'
+  kind: validation_passed
+  node: research
+  agent_session_id: 17ec4699-71ea-4af9-baa7-4716c1410575
+- t: '2026-09-27T09:19:27Z'
+  kind: node_entered
+  node: summarise
+- t: '2026-09-27T09:19:54Z'
+  kind: validation_passed
+  node: summarise
+  agent_session_id: 5461b0e6-8b3e-4b2a-87ea-893c7909e277
+- t: '2026-09-27T09:19:55Z'
+  kind: run_completed

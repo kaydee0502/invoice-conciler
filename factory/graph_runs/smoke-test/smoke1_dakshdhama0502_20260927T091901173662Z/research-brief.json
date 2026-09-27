@@ -1,0 +1,11 @@
+{
+  "_session_id": "17ec4699-71ea-4af9-baa7-4716c1410575",
+  "topic": "Why freight invoices need reconciliation against rate contracts",
+  "bullets": [
+    "Carrier invoices frequently contain billing errors — incorrect base rates, duplicate charges, or mismatched accessorials — that only surface when compared line-by-line against the negotiated rate contract.",
+    "Reconciliation catches unauthorized or unagreed surcharges (fuel, detention, residential delivery, etc.) that carriers may apply outside the terms actually signed, protecting margin on every shipment.",
+    "Without systematic matching of invoiced amounts to contracted rates, discrepancies compound across thousands of shipments, leading to significant cumulative overpayment that is hard to recover after the fact.",
+    "Accurate reconciliation improves freight spend visibility and data quality, enabling better carrier performance scorecards, budgeting, and leverage in future rate negotiations.",
+    "Consistent invoice-to-contract auditing supports compliance and dispute resolution, giving shippers documented evidence when contesting incorrect charges or renegotiating terms with carriers."
+  ]
+}

@@ -1,0 +1,246 @@
+metadata:
+  run_id: 7e224010-d261-4868-b5f7-440aefff93e2
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: contract-spec
+  flow_dot: factory/flows/contract-spec/contract-spec.dot
+  flow_dir: factory/flows/contract-spec
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_1
+  timestamp: 20260927T105437046624Z
+  started_at: '2026-09-27T10:54:37Z'
+  completed_at: '2026-09-27T10:57:06Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z
+    fanout_node: specs_fanout
+    branch_id: B1.1
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:54:37Z'
+      completed_at: '2026-09-27T10:54:37Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: adc2b4d6-a72a-4fad-8812-aebd4bab18c4
+      started_at: '2026-09-27T10:54:46Z'
+      completed_at: '2026-09-27T10:55:36Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T10:55:36Z'
+      validation_feedback: null
+      summary: "Encoded alpine-express.md (AEL/BFC/2025-03, term 2025-03-01..2027-02-28,\
+        \ standard service only): chargeable_weight_kg = max(billed_weight_kg, 25)\
+        \ (\xA71); base_freight tiered on chargeable weight lt 50 -> 9.50/kg, gt 50\
+        \ -> 8.25/kg (\xA72); fragile_handling 150.00 flat when special_handling contains\
+        \ fragile (\xA74); invoice adjustment -5% when consignments_in_calendar_month\
+        \ gt 12 (\xA75); closed_list false; document rules (other) for 30-day payment\
+        \ (\xA76) and 60-day rate-revision notice (\xA77); checker OK, 122 shipments\
+        \ priced."
+      notes: "Ambiguities recorded:\n- weight_exactly_50kg (\xA72): bands are \"under\
+        \ 50 kg\" and \"over 50 kg\"; exactly 50 kg chargeable weight is in neither\
+        \ band, so it is left undetermined (when chargeable_weight_kg eq 50). SH-4111\
+        \ and SH-4198 (50.0 kg) show as UNDETERMINED in the checker.\n- express_not_offered\
+        \ (\xA73): only standard service is offered and no express price exists; shipments\
+        \ with service_level express have no contract rate (when service_level eq\
+        \ express).\nOther caveats: billed_weight_kg is treated as the \"actual weight\"\
+        \ in \xA71. The contract has no charges for cold_chain or residential, no\
+        \ closed-list clause, and no credit-note or dispute-window terms.\n"
+      usage:
+        input_tokens: 8
+        output_tokens: 3956
+        cache_read_input_tokens: 159056
+        cache_creation_input_tokens: 30731
+        reasoning_tokens: 0
+        turns: 4
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: 03f23eb5-1ad0-45aa-b7fa-972f39c51b6a
+      started_at: '2026-09-27T10:55:37Z'
+      completed_at: '2026-09-27T10:57:06Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T10:57:06Z'
+      validation_feedback: null
+      summary: "Encoded alpine-express.md as spec_b.json: chargeable_weight_kg = max(billed_weight_kg,\
+        \ 25) (\xA71); base_freight tiered on chargeable weight at \u20B99.50/kg (lt\
+        \ 50) or \u20B98.25/kg (gt 50) (\xA72); fragile_handling flat \u20B9150/consignment\
+        \ when special_handling contains fragile (\xA74); services_offered = [standard]\
+        \ since express is not offered (\xA73); invoice_adjustments volume_incentive_discount\
+        \ of -5% when consignments_in_calendar_month gt 12 (\xA75); accessorials_policy.closed_list\
+        \ = false (no explicit closed-list statement); flagged two ambiguities (exact-50kg\
+        \ tier gap, express-not-offered scope) in the spec and notes."
+      notes: "Checker ran clean (OK, 122 shipments priced without error) at\n/home/dax/stage2-kit/factory/flows/freight-recon\
+        \ via reconlib.speccheck.\nHand-verified several sample rows against the contract\
+        \ (e.g. 32kg -> 304.00,\n18kg -> 237.50 via the 25kg minimum, 120kg -> 990.00,\
+        \ 25.5kg fragile -> 392.25,\n71.5kg -> 589.88) and both exactly-50kg rows\
+        \ correctly came back UNDETERMINED\ndue to the tier-gap ambiguity. \xA76 (30-day\
+        \ payment terms) and \xA77 (60-day rate\nrevision notice) are administrative,\
+        \ not pricing rules, so left out of\ncharges/document_rules; document_rules\
+        \ is empty since the contract states\nnothing about credit notes, unmatched\
+        \ lines, or dispute windows.\n"
+      usage:
+        input_tokens: 8
+        output_tokens: 7205
+        cache_read_input_tokens: 209735
+        cache_creation_input_tokens: 33984
+        reasoning_tokens: 0
+        turns: 4
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:57:06Z'
+      completed_at: '2026-09-27T10:57:06Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:57:06Z'
+      completed_at: '2026-09-27T10:57:06Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      spec_a: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1/candidates/spec_a.json
+      spec_b: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1/candidates/spec_b.json
+      spec_c: null
+      compare_report: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1/compare-report.json
+      vote_report: null
+      spec_agreed: true
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1/rate-spec.json
+      carrier: alpine
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      contract_file: alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 122
+      _userid: dakshdhama0502
+      _timestamp: 20260927T105437046624Z
+      _run_descriptor: B1_1
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      spec_a: null
+      spec_b: null
+      spec_c: null
+      compare_report: null
+      vote_report: null
+      spec_agreed: null
+      rate_spec: null
+      carrier: alpine
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      contract_file: alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 122
+      _userid: dakshdhama0502
+      _timestamp: 20260927T105437046624Z
+      _run_descriptor: B1_1
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T105437046624Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T10:54:37Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T10:54:46Z'
+  kind: node_entered
+  node: extract_a
+- t: '2026-09-27T10:55:36Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: adc2b4d6-a72a-4fad-8812-aebd4bab18c4
+- t: '2026-09-27T10:55:37Z'
+  kind: node_entered
+  node: extract_b
+- t: '2026-09-27T10:57:06Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: 03f23eb5-1ad0-45aa-b7fa-972f39c51b6a
+- t: '2026-09-27T10:57:06Z'
+  kind: node_entered
+  node: compare
+- t: '2026-09-27T10:57:06Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-27T10:57:06Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-27T10:57:06Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: done
+- t: '2026-09-27T10:57:06Z'
+  kind: run_completed

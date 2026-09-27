@@ -1,0 +1,4 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "title": "Memo batch plan", "type": "object",
+  "required": ["_session_id", "stage", "item_count", "batches"],
+  "properties": { "batches": { "type": "array", "items": { "type": "object",
+    "required": ["batch_id", "carrier", "brief_path", "memos_dir", "contract_path"] } } } }

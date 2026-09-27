@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contract extraction plan",
+  "type": "object",
+  "required": ["_session_id", "stage", "contract_items"],
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "stage": { "const": "plan_contracts" },
+    "contract_items": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "object", "required": ["carrier", "contract_path", "contract_file", "contract_sha256", "shipments_path"] }
+    }
+  }
+}

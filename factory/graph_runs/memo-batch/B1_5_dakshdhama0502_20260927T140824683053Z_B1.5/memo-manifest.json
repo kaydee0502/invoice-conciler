@@ -1,0 +1,9 @@
+{"_session_id": "efe42d75-eddf-4f4b-a617-56f7e3bbfac1", "batch_id": 2,
+ "memos": [
+  {"item_id": "line:FALCON-2026-07A#11", "memo_file": "FALCON-2026-07A__FF-8011.md"},
+  {"item_id": "line:FALCON-2026-07B#8", "memo_file": "FALCON-2026-07B__FF-8003.md"},
+  {"item_id": "line:FALCON-2026-08B#4", "memo_file": "FALCON-2026-08B__FF-8057.md"},
+  {"item_id": "line:FALCON-2026-08B#14", "memo_file": "FALCON-2026-08B__FF-8067.md"},
+  {"item_id": "line:FALCON-2026-09A#7", "memo_file": "FALCON-2026-09A__FF-8078.md"},
+  {"item_id": "line:FALCON-2026-09A#12", "memo_file": "FALCON-2026-09A__FF-8055.md"}
+ ]}

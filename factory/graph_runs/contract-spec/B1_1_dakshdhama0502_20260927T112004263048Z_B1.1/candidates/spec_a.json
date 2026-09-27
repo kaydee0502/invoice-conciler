@@ -1,0 +1,62 @@
+{
+  "_session_id": "07aa1a11-1577-4c28-bde2-2fdd6f016f9d",
+  "carrier": "alpine",
+  "contract_file": "alpine-express.md",
+  "agreement_ref": "AEL/BFC/2025-03",
+  "term": {"from": "2025-03-01", "to": "2027-02-28", "clause": "alpine-express.md header (Term)"},
+  "services_offered": {"values": ["standard"], "clause": "alpine-express.md §3"},
+  "derived_quantities": [
+    {
+      "id": "chargeable_weight_kg",
+      "description": "Higher of the consignment's actual (billed) weight and the 25 kg minimum chargeable weight",
+      "expr": {"max": [{"field": "billed_weight_kg"}, {"const": 25}]},
+      "clause": "alpine-express.md §1"
+    }
+  ],
+  "charges": [
+    {
+      "id": "base_freight",
+      "label": "Freight on chargeable weight",
+      "clause": "alpine-express.md §1, §2",
+      "quote": "consignments under 50 kg: ₹9.50 per kg of chargeable weight; consignments over 50 kg: ₹8.25 per kg of chargeable weight",
+      "when": null,
+      "amount": {"tiered": {"on": {"qty": "chargeable_weight_kg"}, "tiers": [
+        {"lt": 50, "value": {"mul": [{"qty": "chargeable_weight_kg"}, {"const": "9.50"}]}, "clause": "alpine-express.md §2"},
+        {"gt": 50, "value": {"mul": [{"qty": "chargeable_weight_kg"}, {"const": "8.25"}]}, "clause": "alpine-express.md §2"}
+      ]}}
+    },
+    {
+      "id": "fragile_handling",
+      "label": "Protected handling for fragile consignments",
+      "clause": "alpine-express.md §4",
+      "quote": "Consignments booked as fragile are handled under the Carrier's protected-handling process at ₹150.00 per consignment, in addition to freight.",
+      "when": {"field": "special_handling", "op": "contains", "value": "fragile"},
+      "amount": {"const": "150.00"}
+    }
+  ],
+  "accessorials_policy": {"closed_list": false, "clause": "alpine-express.md §4"},
+  "invoice_adjustments": [
+    {
+      "id": "volume_incentive",
+      "label": "5% volume discount on invoice total",
+      "kind": "percent_of_invoice_total",
+      "percent": -5,
+      "when": {"metric": "consignments_in_calendar_month", "op": "gt", "value": 12},
+      "clause": "alpine-express.md §5",
+      "quote": "In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice."
+    }
+  ],
+  "document_rules": [
+    {"id": "other", "rule": "Carrier invoices monthly; payment due 30 days from invoice date.", "value": 30, "clause": "alpine-express.md §6"},
+    {"id": "other", "rule": "Rate revisions require 60 days' written notice and take effect from the first day of the following calendar month.", "value": 60, "clause": "alpine-express.md §7"}
+  ],
+  "ambiguities": [
+    {
+      "id": "weight_exactly_50kg",
+      "clause": "alpine-express.md §2",
+      "description": "Rates are stated for consignments 'under 50 kg' (₹9.50/kg) and 'over 50 kg' (₹8.25/kg); a consignment of exactly 50 kg is covered by neither band, so its rate is undetermined.",
+      "when": {"qty": "chargeable_weight_kg", "op": "eq", "value": 50}
+    }
+  ],
+  "notes": "§2 bands say 'consignments under/over 50 kg' without stating whether actual or chargeable weight is compared; because the 25 kg minimum is below 50, both readings select the same band for every weight, so tiers are keyed on chargeable_weight_kg. §3: only standard service is offered. No closed-list clause, no credit-note or dispute-window terms in the contract."
+}

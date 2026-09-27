@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Memo batch manifest written by the memo worker",
+  "type": "object",
+  "required": ["_session_id", "batch_id", "memos"],
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "batch_id": { "type": ["integer", "string"] },
+    "memos": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["item_id", "memo_file"] } }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "_session_id": "c6b4b021-2f69-4499-a03b-35382e431a9b",
+  "carrier": "sagar",
+  "contract_file": "sagar-roadlines.md",
+  "agreement_ref": "SRL/BFC/2025-08",
+  "term": {
+    "from": "2025-08-01",
+    "to": "2027-07-31",
+    "clause": "sagar-roadlines.md (header, Term line)"
+  },
+  "services_offered": {
+    "values": ["standard"],
+    "clause": "sagar-roadlines.md §2"
+  },
+  "derived_quantities": [],
+  "charges": [
+    {
+      "id": "weight_component",
+      "label": "Weight component (₹6.00 per kg of billed weight)",
+      "when": null,
+      "amount": { "mul": [ { "const": 6.00 }, { "field": "billed_weight_kg" } ] },
+      "clause": "sagar-roadlines.md §1",
+      "quote": "a weight component of ₹6.00 per kg of billed weight"
+    },
+    {
+      "id": "distance_component",
+      "label": "Distance component (₹2.00 per km of booked lane distance)",
+      "when": null,
+      "amount": { "mul": [ { "const": 2.00 }, { "field": "distance_km" } ] },
+      "clause": "sagar-roadlines.md §1",
+      "quote": "a distance component of ₹2.00 per km of the booked lane distance"
+    },
+    {
+      "id": "cold_chain_premium",
+      "label": "Cold chain premium (20% on the freight charge)",
+      "when": { "field": "special_handling", "op": "contains", "value": "cold_chain" },
+      "amount": {
+        "percent": 20,
+        "of": { "add": [ { "charge": "weight_component" }, { "charge": "distance_component" } ] }
+      },
+      "clause": "sagar-roadlines.md §3",
+      "quote": "Consignments booked as cold chain travel in refrigerated vehicles and carry a premium of 20% on the freight charge (the sum of the weight and distance components)."
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": false,
+    "clause": "sagar-roadlines.md §1, §3"
+  },
+  "invoice_adjustments": [],
+  "document_rules": [
+    {
+      "id": "unmatched_lines_not_payable",
+      "rule": "The c-note number quoted on each invoice line must correspond to a Customer booking; lines that cannot be matched to a booking are not payable until reconciled.",
+      "clause": "sagar-roadlines.md §5"
+    },
+    {
+      "id": "credit_notes_permitted",
+      "rule": "The Carrier may issue credit notes correcting earlier invoices; a credit note references the original c-note number and the invoice it corrects.",
+      "clause": "sagar-roadlines.md §6"
+    },
+    {
+      "id": "credit_note_must_cover_full_correction",
+      "rule": "A credit note must cover the full corrected amount.",
+      "clause": "sagar-roadlines.md §6"
+    },
+    {
+      "id": "other",
+      "rule": "Payment is due 21 days from invoice date.",
+      "value": 21,
+      "clause": "sagar-roadlines.md §4"
+    }
+  ],
+  "ambiguities": [
+    {
+      "id": "express_service_not_covered",
+      "clause": "sagar-roadlines.md §2",
+      "description": "The contract states only standard service is offered under this agreement; no rate is given for express service. Shipments with service_level=express are outside the scope of this rate card and pricing is undetermined.",
+      "when": { "field": "service_level", "op": "eq", "value": "express" }
+    }
+  ],
+  "notes": "Freight = weight component (₹6/kg billed weight) + distance component (₹2/km) per §1; only standard service offered (§2); cold_chain flag adds a 20% premium on the sum of the weight+distance components (§3), no premium named for fragile or residential handling so none is charged. No accessorial schedule beyond §1/§3 and no explicit closed-list statement, so accessorials_policy.closed_list=false. No invoice-level volume discount is stated. Ambiguity: contract offers only standard service (§2) with no express rate, so service_level=express shipments have undetermined pricing under this agreement."
+}

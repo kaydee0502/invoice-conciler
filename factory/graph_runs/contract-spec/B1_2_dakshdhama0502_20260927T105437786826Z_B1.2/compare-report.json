@@ -1,0 +1,247 @@
+{
+  "_session_id": "script:specdiff",
+  "agreed": false,
+  "chosen": null,
+  "probe_count": 284,
+  "static_problems": {
+    "spec_a": [],
+    "spec_b": []
+  },
+  "pairs": {
+    "spec_a~spec_b": [
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 500.5,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2000.5,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2001.0,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 500.5,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2000.5,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2001.0,
+          "distance_km": 650,
+          "service_level": "express",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 500.5,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2000.5,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2001.0,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 500.5,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2000.5,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4001",
+          "billed_weight_kg": 2001.0,
+          "distance_km": 650,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "undetermined",
+          "amount": null
+        },
+        "b": {
+          "status": "spec_error",
+          "amount": "derived quantity 'base_rate_per_km' used before it is defined"
+        }
+      }
+    ]
+  },
+  "carrier": "falcon",
+  "candidates": [
+    "spec_a",
+    "spec_b"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "_session_id": "26408b00-fbcd-4258-8699-60d12eb8a73a",
+  "carrier": "alpine",
+  "contract_file": "alpine-express.md",
+  "agreement_ref": "AEL/BFC/2025-03",
+  "term": {
+    "from": "2025-03-01",
+    "to": "2027-02-28",
+    "clause": "alpine-express.md preamble (Term line)"
+  },
+  "services_offered": {
+    "values": ["standard"],
+    "clause": "alpine-express.md §3"
+  },
+  "derived_quantities": [
+    {
+      "id": "chargeable_weight_kg",
+      "description": "Higher of actual (billed) weight and the 25 kg minimum chargeable weight.",
+      "expr": {"max": [{"field": "billed_weight_kg"}, {"const": 25}]},
+      "clause": "alpine-express.md §1"
+    }
+  ],
+  "charges": [
+    {
+      "id": "base_freight",
+      "label": "Freight charge on chargeable weight",
+      "clause": "alpine-express.md §1, §2",
+      "when": null,
+      "amount": {
+        "tiered": {
+          "on": {"qty": "chargeable_weight_kg"},
+          "tiers": [
+            {"lt": 50, "value": {"mul": [{"const": 9.50}, {"qty": "chargeable_weight_kg"}]}, "clause": "alpine-express.md §2"},
+            {"gt": 50, "value": {"mul": [{"const": 8.25}, {"qty": "chargeable_weight_kg"}]}, "clause": "alpine-express.md §2"}
+          ]
+        }
+      }
+    },
+    {
+      "id": "fragile_handling",
+      "label": "Protected-handling fee for fragile consignments",
+      "clause": "alpine-express.md §4",
+      "when": {"field": "special_handling", "op": "contains", "value": "fragile"},
+      "amount": {"const": 150.00}
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": false,
+    "clause": "alpine-express.md §§1-4 (silent on charges outside the listed schedule)"
+  },
+  "invoice_adjustments": [
+    {
+      "id": "volume_discount",
+      "label": "5% discount on invoice total when more than 12 consignments are tendered in a calendar month",
+      "kind": "percent_of_invoice_total",
+      "percent": -5,
+      "when": {"metric": "consignments_in_calendar_month", "op": "gt", "value": 12},
+      "clause": "alpine-express.md §5",
+      "quote": "In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice."
+    }
+  ],
+  "document_rules": [],
+  "ambiguities": [
+    {
+      "id": "rate_gap_at_50kg",
+      "clause": "alpine-express.md §2",
+      "description": "The rate schedule prices consignments 'under 50 kg' at ₹9.50/kg and consignments 'over 50 kg' at ₹8.25/kg. Neither band covers a chargeable weight of exactly 50 kg, so the rate for that exact value is undetermined.",
+      "when": {"qty": "chargeable_weight_kg", "op": "eq", "value": 50}
+    },
+    {
+      "id": "express_service_not_priced",
+      "clause": "alpine-express.md §3",
+      "description": "The agreement states express products are not offered and all bookings travel on standard service. No rate exists under this contract for a shipment recorded with service_level = express.",
+      "when": {"field": "service_level", "op": "eq", "value": "express"}
+    },
+    {
+      "id": "accessorials_closed_list_not_stated",
+      "clause": "alpine-express.md §§1-4",
+      "description": "The contract does not explicitly state whether charges outside its rate schedule (freight and fragile handling) are payable or excluded. accessorials_policy.closed_list is recorded as false rather than assumed closed.",
+      "when": null
+    }
+  ],
+  "notes": "Charges encoded: base_freight (tiered ₹9.50/kg under 50kg chargeable weight, ₹8.25/kg over 50kg, chargeable weight = max(actual, 25kg minimum) per §1-§2) and fragile_handling (flat ₹150/consignment when special_handling contains fragile, per §4). Invoice adjustment: volume_discount (-5% of invoice total when consignments_in_calendar_month > 12, per §5). services_offered restricted to [standard] per §3 (express not offered). Ambiguities: (1) exact 50kg chargeable weight falls in the gap between the 'under 50' and 'over 50' rate bands and is left undetermined; (2) no price exists for service_level=express since the contract excludes express entirely; (3) the contract never states whether accessorials outside its schedule are payable, so accessorials_policy.closed_list is set false rather than assumed."
+}

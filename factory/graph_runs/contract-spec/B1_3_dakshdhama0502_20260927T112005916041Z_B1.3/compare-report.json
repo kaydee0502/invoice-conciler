@@ -1,0 +1,419 @@
+{
+  "_session_id": "script:specdiff",
+  "agreed": false,
+  "chosen": null,
+  "probe_count": 202,
+  "static_problems": {
+    "spec_a": [],
+    "spec_b": []
+  },
+  "pairs": {
+    "spec_a~spec_b": [
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 20.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 240.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 20.0,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1600.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 20.5,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 243.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 20.5,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1601.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 21.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 246.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 21.0,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1602.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 21.5,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 249.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 21.5,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1603.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 22.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 252.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 22.0,
+          "service_level": "standard",
+          "special_handling": [
+            "fragile"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1604.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 20.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 240.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 20.0,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1600.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 20.5,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 243.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 20.5,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1601.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 21.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 246.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 21.0,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1602.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 21.5,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 249.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 21.5,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1603.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 22.0,
+          "distance_km": 60,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 252.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      },
+      {
+        "probe": {
+          "shipment_id": "SH-4227",
+          "billed_weight_kg": 260,
+          "distance_km": 22.0,
+          "service_level": "standard",
+          "special_handling": [
+            "residential"
+          ],
+          "ship_date": "2026-07-02"
+        },
+        "a": {
+          "status": "determined",
+          "amount": 1604.0
+        },
+        "b": {
+          "status": "undetermined",
+          "amount": null
+        }
+      }
+    ]
+  },
+  "carrier": "sagar",
+  "candidates": [
+    "spec_a",
+    "spec_b"
+  ]
+}

@@ -1,0 +1,282 @@
+metadata:
+  run_id: 3aa1fcfa-0896-4cdc-8686-b9c5c23026f1
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: contract-spec
+  flow_dot: factory/flows/contract-spec/contract-spec.dot
+  flow_dir: factory/flows/contract-spec
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_2
+  timestamp: 20260927T140514835694Z
+  started_at: '2026-09-27T14:05:14Z'
+  completed_at: '2026-09-27T14:07:34Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z
+    fanout_node: specs_fanout
+    branch_id: B1.2
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:05:14Z'
+      completed_at: '2026-09-27T14:05:14Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    load_item:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:05:15Z'
+      completed_at: '2026-09-27T14:05:15Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: 36b94e92-fa3e-4084-a668-614732874a2f
+      started_at: '2026-09-27T14:05:15Z'
+      completed_at: '2026-09-27T14:06:02Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T14:06:02Z'
+      validation_feedback: null
+      summary: "Encoded falcon-freight.md (FF/BFC/2024-11, term 2024-12-01..2026-11-30)\
+        \ as spec_a.json: base_freight = distance_km x tiered rate on billed_weight_kg\
+        \ (lte 500 -> 18.00/km; gte 501 lte 2000 -> 24.00/km; gt 2000 out_of_card)\
+        \ \xA71; express_premium 15% of base when service_level=express \xA72; fuel_surcharge\
+        \ 12% of (base + express premium) \xA73; residential_delivery 250.00 flat\
+        \ when special_handling contains residential \xA74; closed accessorial list\
+        \ \xA75; no invoice adjustments; document rules: credit notes permitted \xA7\
+        8, 45-day dispute window \xA77, fortnightly invoicing/30-day payment \xA7\
+        6. Checker OK (108 shipments priced); SH-4005 and SH-4007 verified by hand."
+      notes: "Ambiguities recorded:\n- weight_band_gap_500_501 (\xA71): bands are\
+        \ \"up to and including 500 kg\" and \"501 kg to 2,000 kg\";\n  billed weights\
+        \ strictly between 500 and 501 kg are uncovered. Tiers kept literal; ambiguity\n\
+        \  when = billed_weight_kg gt 500 AND lt 501.\nOther caveats (in spec notes,\
+        \ not ambiguities):\n- \xA74 residential also covers \"consignee address is\
+        \ a residence\" without a flag; the record can only\n  express the residential\
+        \ flag, so the charge keys on special_handling contains residential.\n- services_offered\
+        \ = [express, standard]: \xA72 treats express as optional (\"where booked\"\
+        ); standard implied.\n- Term has no \xA7 number in the contract; cited as\
+        \ the preamble.\n"
+      usage:
+        input_tokens: 6
+        output_tokens: 3765
+        cache_read_input_tokens: 109415
+        cache_creation_input_tokens: 31697
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: a977398e-816e-4ec9-adde-7fa8af3c568f
+      started_at: '2026-09-27T14:06:03Z'
+      completed_at: '2026-09-27T14:07:34Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T14:07:34Z'
+      validation_feedback: null
+      summary: 'Encoded falcon-freight.md as spec_b.json: base_freight (tiered per-km
+        rate on billed_weight_kg, Rs18/km lte 500kg, Rs24/km 501-2000kg, out_of_card
+        above 2000kg), express_premium (15% of base_freight when service_level=express),
+        fuel_surcharge (12% of base_freight+express_premium, always), residential_delivery
+        (flat Rs250 when special_handling contains residential), closed accessorials
+        list, no invoice_adjustments, document_rules for credit notes and the 45-day
+        dispute window; checker OK on 108 shipments, hand-verified 3 lines against
+        the contract.'
+      notes: "Ambiguity recorded: \xA71's weight bands (\"up to and including 500\
+        \ kg\" then\n\"501 kg to 2,000 kg\") leave the open interval (500, 501) kg\
+        \ uncovered if\nbilled_weight_kg can be fractional; kept as an ambiguity with\
+        \ a `when`\ncondition rather than assigned to either tier. Weights above 2,000\
+        \ kg are\nencoded as an out_of_card tier per \xA71's \"quoted case by case\
+        \ ... outside\nthis rate card\" language, not priced or guessed. The contract\
+        \ names only\n\"Express service\" (\xA72); the field's other allowed value,\
+        \ \"standard\", is\nused for the implicit default/non-express service since\
+        \ it is the only\nremaining enum value \u2014 not flagged as ambiguous. No\
+        \ volume/invoice-total\ndiscount is stated anywhere in the contract, so invoice_adjustments\
+        \ is\nempty.\n"
+      usage:
+        input_tokens: 10
+        output_tokens: 7426
+        cache_read_input_tokens: 273502
+        cache_creation_input_tokens: 35751
+        reasoning_tokens: 0
+        turns: 5
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:07:34Z'
+      completed_at: '2026-09-27T14:07:34Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:07:34Z'
+      completed_at: '2026-09-27T14:07:34Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      spec_cache_key: b45248af265bd80c158f0699ebb3176909307252b0e92e4e9fc42f89f042bd66
+      contract_path: /home/dax/stage2-kit/data/contracts/falcon-freight.md
+      contract_file: falcon-freight.md
+      contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 108
+      spec_a: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2/candidates/spec_a.json
+      spec_b: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2/candidates/spec_b.json
+      spec_c: null
+      compare_report: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2/compare-report.json
+      vote_report: null
+      spec_agreed: true
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2/rate-spec.json
+      carrier: falcon
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/contract-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T140514835694Z
+      _run_descriptor: B1_2
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      spec_cache_key: null
+      contract_path: null
+      contract_file: null
+      contract_sha256: null
+      shipments_path: null
+      recon_flow_dir: null
+      recon_python: null
+      service_levels: null
+      handling_flags: null
+      shipment_count: null
+      spec_a: null
+      spec_b: null
+      spec_c: null
+      compare_report: null
+      vote_report: null
+      spec_agreed: null
+      rate_spec: null
+      carrier: falcon
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/contract-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T140514835694Z
+      _run_descriptor: B1_2
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T140514835694Z_B1.2
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T14:05:14Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T14:05:15Z'
+  kind: node_entered
+  node: load_item
+- t: '2026-09-27T14:05:15Z'
+  kind: script_node_ran
+  node: load_item
+  exit_code: 0
+- t: '2026-09-27T14:05:15Z'
+  kind: validation_passed
+  node: load_item
+  agent_session_id: null
+- t: '2026-09-27T14:05:15Z'
+  kind: node_entered
+  node: extract_a
+- t: '2026-09-27T14:06:02Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: 36b94e92-fa3e-4084-a668-614732874a2f
+- t: '2026-09-27T14:06:03Z'
+  kind: node_entered
+  node: extract_b
+- t: '2026-09-27T14:07:34Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: a977398e-816e-4ec9-adde-7fa8af3c568f
+- t: '2026-09-27T14:07:34Z'
+  kind: node_entered
+  node: compare
+- t: '2026-09-27T14:07:34Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-27T14:07:34Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-27T14:07:34Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: done
+- t: '2026-09-27T14:07:34Z'
+  kind: run_completed

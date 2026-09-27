@@ -1,0 +1,117 @@
+{
+  "_session_id": "script:specdiff",
+  "carrier": "sagar",
+  "contract_file": "sagar-roadlines.md",
+  "agreement_ref": "SRL/BFC/2025-08",
+  "term": {
+    "from": "2025-08-01",
+    "to": "2027-07-31",
+    "clause": "sagar-roadlines.md header (Term)"
+  },
+  "services_offered": {
+    "values": [
+      "standard"
+    ],
+    "clause": "sagar-roadlines.md \u00a72"
+  },
+  "derived_quantities": [],
+  "charges": [
+    {
+      "id": "weight_component",
+      "label": "Weight component (\u20b96.00 per kg of billed weight)",
+      "clause": "sagar-roadlines.md \u00a71",
+      "quote": "a weight component of \u20b96.00 per kg of billed weight",
+      "when": null,
+      "amount": {
+        "mul": [
+          {
+            "const": "6.00"
+          },
+          {
+            "field": "billed_weight_kg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "distance_component",
+      "label": "Distance component (\u20b92.00 per km of booked lane distance)",
+      "clause": "sagar-roadlines.md \u00a71",
+      "quote": "a distance component of \u20b92.00 per km of the booked lane distance",
+      "when": null,
+      "amount": {
+        "mul": [
+          {
+            "const": "2.00"
+          },
+          {
+            "field": "distance_km"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cold_chain_premium",
+      "label": "Cold chain premium (20% of freight charge = weight + distance components)",
+      "clause": "sagar-roadlines.md \u00a73",
+      "quote": "carry a premium of 20% on the freight charge (the sum of the weight and distance components)",
+      "when": {
+        "field": "special_handling",
+        "op": "contains",
+        "value": "cold_chain"
+      },
+      "amount": {
+        "percent": 20,
+        "of": {
+          "add": [
+            {
+              "charge": "weight_component"
+            },
+            {
+              "charge": "distance_component"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": false,
+    "clause": "sagar-roadlines.md \u00a71, \u00a73"
+  },
+  "invoice_adjustments": [],
+  "document_rules": [
+    {
+      "id": "unmatched_lines_not_payable",
+      "rule": "Each invoice line's c-note number must correspond to a Customer booking; lines that cannot be matched to a booking are not payable until reconciled.",
+      "clause": "sagar-roadlines.md \u00a75"
+    },
+    {
+      "id": "credit_notes_permitted",
+      "rule": "The Carrier may issue credit notes correcting earlier invoices; a credit note references the original c-note number and the invoice it corrects.",
+      "clause": "sagar-roadlines.md \u00a76"
+    },
+    {
+      "id": "credit_note_must_cover_full_correction",
+      "rule": "A credit note must cover the full corrected amount.",
+      "clause": "sagar-roadlines.md \u00a76"
+    },
+    {
+      "id": "other",
+      "rule": "Carrier invoices as trips are pooled (typically fortnightly); payment is due 21 days from invoice date.",
+      "value": {
+        "payment_due_days": 21
+      },
+      "clause": "sagar-roadlines.md \u00a74"
+    }
+  ],
+  "ambiguities": [],
+  "notes": "Freight = 6.00*billed_weight_kg + 2.00*distance_km, no minimum, no distance or weight tiers. Cold chain adds 20% of (weight + distance). Only standard service is offered (\u00a72); the contract states no express rate. No charges for fragile or residential handling are listed, and the contract does not say unlisted charges are not payable, so closed_list is false. No invoice-level discounts. No dispute window stated.",
+  "_provenance": {
+    "chosen": "spec_a",
+    "agreed_with": [
+      "spec_a~spec_c"
+    ],
+    "probe_count": 172
+  }
+}

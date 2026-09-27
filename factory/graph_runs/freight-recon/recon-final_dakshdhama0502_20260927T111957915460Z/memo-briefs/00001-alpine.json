@@ -1,0 +1,136 @@
+{
+  "batch_id": 1,
+  "carrier": "alpine",
+  "contract_path": "/home/dax/stage2-kit/data/contracts/alpine-express.md",
+  "items": [
+    {
+      "item_id": "line:ALPINE-0726#5",
+      "kind": "line",
+      "carrier": "alpine",
+      "memo_file": "ALPINE-0726__AE-3005.md",
+      "report_entry": {
+        "invoice": "ALPINE-0726",
+        "consignment_ref": "AE-3005",
+        "shipment_id": "SH-4111",
+        "billed_amount": 475.0,
+        "expected_amount": null,
+        "delta": null,
+        "disposition": "escalate",
+        "justification": "The contract does not determine an amount for this consignment: weight_exactly_50kg: Rates are stated for consignments 'under 50 kg' (₹9.50/kg) and 'over 50 kg' (₹8.25/kg); a consignment of exactly 50 kg is covered by neither band, so its rate is undetermined. (alpine-express.md §2); base_freight: no rate tier covers 50.0 (alpine-express.md §1, §2). Billed ₹475.00; needs a rate decision before payment.",
+        "contract_clause": "alpine-express.md §1, §2"
+      },
+      "rule": "R_UNDETERMINED",
+      "reasons": [
+        {
+          "code": "UNDETERMINED_AMBIGUITY",
+          "detail": "weight_exactly_50kg: Rates are stated for consignments 'under 50 kg' (₹9.50/kg) and 'over 50 kg' (₹8.25/kg); a consignment of exactly 50 kg is covered by neither band, so its rate is undetermined.",
+          "clause": "alpine-express.md §2"
+        },
+        {
+          "code": "UNDETERMINED_TIER_GAP",
+          "detail": "base_freight: no rate tier covers 50.0",
+          "clause": "alpine-express.md §1, §2"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 475.0,
+          "derived": true
+        },
+        {
+          "label": "handling fee",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        8.25,
+        9.5,
+        475.0
+      ]
+    },
+    {
+      "item_id": "line:ALPINE-0926#17",
+      "kind": "line",
+      "carrier": "alpine",
+      "memo_file": "ALPINE-0926__AE-3092.md",
+      "report_entry": {
+        "invoice": "ALPINE-0926",
+        "consignment_ref": "AE-3092",
+        "shipment_id": "SH-4198",
+        "billed_amount": 475.0,
+        "expected_amount": null,
+        "delta": null,
+        "disposition": "escalate",
+        "justification": "The contract does not determine an amount for this consignment: weight_exactly_50kg: Rates are stated for consignments 'under 50 kg' (₹9.50/kg) and 'over 50 kg' (₹8.25/kg); a consignment of exactly 50 kg is covered by neither band, so its rate is undetermined. (alpine-express.md §2); base_freight: no rate tier covers 50.0 (alpine-express.md §1, §2). Billed ₹475.00; needs a rate decision before payment.",
+        "contract_clause": "alpine-express.md §1, §2"
+      },
+      "rule": "R_UNDETERMINED",
+      "reasons": [
+        {
+          "code": "UNDETERMINED_AMBIGUITY",
+          "detail": "weight_exactly_50kg: Rates are stated for consignments 'under 50 kg' (₹9.50/kg) and 'over 50 kg' (₹8.25/kg); a consignment of exactly 50 kg is covered by neither band, so its rate is undetermined.",
+          "clause": "alpine-express.md §2"
+        },
+        {
+          "code": "UNDETERMINED_TIER_GAP",
+          "detail": "base_freight: no rate tier covers 50.0",
+          "clause": "alpine-express.md §1, §2"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 475.0,
+          "derived": true
+        },
+        {
+          "label": "handling fee",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        8.25,
+        9.5,
+        475.0
+      ]
+    },
+    {
+      "item_id": "finding:ALPINE-0726:INVOICE_ADJUSTMENT",
+      "kind": "finding",
+      "carrier": "alpine",
+      "memo_file": "ALPINE-0726__invoice_adjustment.md",
+      "report_entry": {
+        "invoice": "ALPINE-0726",
+        "description": "5% volume discount on invoice total (alpine-express.md §5): 40 consignments tendered in 2026-07; contract adjustment -₹1,007.46 on the contract line total of the determinable lines, printed adjustment ₹0.00",
+        "amount_impact": 1007.46,
+        "disposition": "dispute",
+        "justification": "40 consignments were tendered in 2026-07, so the contract's invoice-level adjustment applies (alpine-express.md §5): -₹1,007.46 on the contract line total of the determinable lines (a lower bound). The invoice applies ₹0.00; ₹1,007.46 is owed to BlueFin. Lines ['ALPINE-0726#5'] have no determinable contract amount; the adjustment on them is settled together with those escalated lines.",
+        "contract_clause": "alpine-express.md §5"
+      },
+      "rule": "R_ADJ_SHORT",
+      "details": {
+        "kind": "INVOICE_ADJUSTMENT",
+        "anomaly_codes": [],
+        "tendered_in_month": 40,
+        "month": "2026-07",
+        "printed_adjustment": 0.0,
+        "expected_adjustment": null,
+        "expected_adjustment_on_determined_lines": -1007.46,
+        "rule": "R_ADJ_SHORT"
+      },
+      "allowed_amounts": [
+        0.0,
+        1007.46
+      ]
+    }
+  ]
+}

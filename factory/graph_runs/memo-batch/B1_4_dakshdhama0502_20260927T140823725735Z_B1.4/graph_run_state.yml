@@ -1,0 +1,210 @@
+metadata:
+  run_id: 14860442-ebf4-4324-9d89-e5354badcf23
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: memo-batch
+  flow_dot: factory/flows/memo-batch/memo-batch.dot
+  flow_dir: factory/flows/memo-batch
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_4
+  timestamp: 20260927T140823725735Z
+  started_at: '2026-09-27T14:08:23Z'
+  completed_at: '2026-09-27T14:09:06Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z
+    fanout_node: memos_fanout
+    branch_id: B1.4
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:08:23Z'
+      completed_at: '2026-09-27T14:08:23Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    load_item:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:08:24Z'
+      completed_at: '2026-09-27T14:08:24Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    write_memos:
+      status: done
+      agent_id: null
+      agent_session_id: d8e5c4d8-7831-41e8-a93f-2053106b815a
+      started_at: '2026-09-27T14:08:24Z'
+      completed_at: '2026-09-27T14:09:06Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T14:09:06Z'
+      validation_feedback: null
+      summary: "Wrote 3 memos for alpine batch 1 (two escalations for 50 kg consignments\
+        \ AE-3005 and AE-3092 where the rate band is undetermined, one dispute for\
+        \ the missing 5% volume discount on ALPINE-0726 of \u20B91,007.46); memo checker\
+        \ exits 0; manifest written."
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 2404
+        cache_read_input_tokens: 103118
+        cache_creation_input_tokens: 21851
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    check_memos:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:09:06Z'
+      completed_at: '2026-09-27T14:09:06Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:09:06Z'
+      completed_at: '2026-09-27T14:09:06Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      carrier: alpine
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/memo-briefs/00001-alpine.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/memo-batches/00001-alpine
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 3
+      memo_manifest: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T140823725735Z_B1.4/memo-manifest.json
+      memo_check: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T140823725735Z_B1.4/memo-check.json
+      memo_next: done
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: 1
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/memo-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T140823725735Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T140823725735Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      carrier: null
+      brief_path: null
+      memos_dir: null
+      contract_path: null
+      recon_flow_dir: null
+      recon_python: null
+      item_count: null
+      memo_manifest: null
+      memo_check: null
+      memo_next: null
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: 1
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-submission_dakshdhama0502_20260927T140502234303Z/memo-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T140823725735Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T140823725735Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T14:08:23Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T14:08:24Z'
+  kind: node_entered
+  node: load_item
+- t: '2026-09-27T14:08:24Z'
+  kind: script_node_ran
+  node: load_item
+  exit_code: 0
+- t: '2026-09-27T14:08:24Z'
+  kind: validation_passed
+  node: load_item
+  agent_session_id: null
+- t: '2026-09-27T14:08:24Z'
+  kind: node_entered
+  node: write_memos
+- t: '2026-09-27T14:09:06Z'
+  kind: validation_passed
+  node: write_memos
+  agent_session_id: d8e5c4d8-7831-41e8-a93f-2053106b815a
+- t: '2026-09-27T14:09:06Z'
+  kind: node_entered
+  node: check_memos
+- t: '2026-09-27T14:09:06Z'
+  kind: script_node_ran
+  node: check_memos
+  exit_code: 0
+- t: '2026-09-27T14:09:06Z'
+  kind: validation_passed
+  node: check_memos
+  agent_session_id: null
+- t: '2026-09-27T14:09:06Z'
+  kind: branch_auto_resolved
+  node: check_memos
+  chose: done
+- t: '2026-09-27T14:09:06Z'
+  kind: run_completed

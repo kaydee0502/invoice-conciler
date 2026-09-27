@@ -1,0 +1,24 @@
+{
+  "_session_id": "script:specdiff",
+  "agreed": false,
+  "chosen": null,
+  "probe_count": 172,
+  "static_problems": {
+    "spec_a": [],
+    "spec_b": []
+  },
+  "pairs": {
+    "spec_a~spec_b": [
+      {
+        "field": "accessorials_policy.closed_list",
+        "a": false,
+        "b": true
+      }
+    ]
+  },
+  "carrier": "sagar",
+  "candidates": [
+    "spec_a",
+    "spec_b"
+  ]
+}

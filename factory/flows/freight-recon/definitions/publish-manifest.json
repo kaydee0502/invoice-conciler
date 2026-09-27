@@ -1,0 +1,4 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "title": "Publish manifest", "type": "object",
+  "required": ["_session_id", "stage", "report", "memos", "published_to"],
+  "properties": { "report": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "memos": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" } } } }

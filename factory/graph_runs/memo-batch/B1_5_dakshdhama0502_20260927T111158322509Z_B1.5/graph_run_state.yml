@@ -1,0 +1,179 @@
+metadata:
+  run_id: c6e84013-b817-4efe-9750-2c408bb4d02b
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: memo-batch
+  flow_dot: factory/flows/memo-batch/memo-batch.dot
+  flow_dir: factory/flows/memo-batch
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_5
+  timestamp: 20260927T111158322509Z
+  started_at: '2026-09-27T11:11:58Z'
+  completed_at: '2026-09-27T11:12:59Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z
+    fanout_node: memos_fanout
+    branch_id: B1.5
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:11:58Z'
+      completed_at: '2026-09-27T11:11:58Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    write_memos:
+      status: done
+      agent_id: null
+      agent_session_id: 8fd987a2-e462-4e0d-8e4c-71ad642a6092
+      started_at: '2026-09-27T11:12:08Z'
+      completed_at: '2026-09-27T11:12:58Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T11:12:58Z'
+      validation_feedback: null
+      summary: Wrote 6 dispute memos for falcon-1 batch (2 unlisted detention charges,
+        2 freight-rate overbillings, 2 duplicate billings) to memo-batches/falcon-1;
+        memos checker exit 0; manifest written.
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 4530
+        cache_read_input_tokens: 108508
+        cache_creation_input_tokens: 26704
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    check_memos:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:12:59Z'
+      completed_at: '2026-09-27T11:12:59Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:12:59Z'
+      completed_at: '2026-09-27T11:12:59Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      memo_manifest: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_5_dakshdhama0502_20260927T111158322509Z_B1.5/memo-manifest.json
+      memo_check: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_5_dakshdhama0502_20260927T111158322509Z_B1.5/memo-check.json
+      memo_next: done
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: falcon-1
+      carrier: falcon
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/falcon-1.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/falcon-1
+      contract_path: /home/dax/stage2-kit/data/contracts/falcon-freight.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 6
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111158322509Z
+      _run_descriptor: B1_5
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_5_dakshdhama0502_20260927T111158322509Z_B1.5
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      memo_manifest: null
+      memo_check: null
+      memo_next: null
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: falcon-1
+      carrier: falcon
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/falcon-1.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/falcon-1
+      contract_path: /home/dax/stage2-kit/data/contracts/falcon-freight.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 6
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111158322509Z
+      _run_descriptor: B1_5
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_5_dakshdhama0502_20260927T111158322509Z_B1.5
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T11:11:58Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T11:12:08Z'
+  kind: node_entered
+  node: write_memos
+- t: '2026-09-27T11:12:58Z'
+  kind: validation_passed
+  node: write_memos
+  agent_session_id: 8fd987a2-e462-4e0d-8e4c-71ad642a6092
+- t: '2026-09-27T11:12:59Z'
+  kind: node_entered
+  node: check_memos
+- t: '2026-09-27T11:12:59Z'
+  kind: script_node_ran
+  node: check_memos
+  exit_code: 0
+- t: '2026-09-27T11:12:59Z'
+  kind: validation_passed
+  node: check_memos
+  agent_session_id: null
+- t: '2026-09-27T11:12:59Z'
+  kind: branch_auto_resolved
+  node: check_memos
+  chose: done
+- t: '2026-09-27T11:12:59Z'
+  kind: run_completed

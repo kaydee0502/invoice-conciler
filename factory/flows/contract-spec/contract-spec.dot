@@ -1,0 +1,44 @@
+// factory/flows/contract-spec/contract-spec.dot
+// One contract -> one agreed rate spec. Two independent extractions on
+// different models; a behavioural diff decides agreement; on disagreement a
+// third extraction breaks the tie by majority, or the run stops.
+
+digraph contract_spec {
+  graph [label="Contract -> rate spec (dual extraction)"]
+
+  start      [shape=Mdiamond]
+
+  load_item  [shape=box, runner=script, script="scripts/load_item.sh", working_dir="{_run_artefact_dir}",
+              output_schema="load_outputs", description="Resolve this branch's carrier to its plan entry."]
+
+  extract_a  [shape=box, prompt_template="prompts/extract_a.md", working_dir="{_run_artefact_dir}",
+              output_schema="extract_a_outputs", model="opus", permission_mode="auto",
+              description="Extraction A: contract prose -> rate spec."]
+
+  extract_b  [shape=box, prompt_template="prompts/extract_b.md", working_dir="{_run_artefact_dir}",
+              output_schema="extract_b_outputs", model="sonnet", permission_mode="auto",
+              description="Extraction B: independent re-extraction on a different model."]
+
+  compare    [shape=box, runner=script, script="scripts/compare.sh",
+              working_dir="{_run_artefact_dir}", output_schema="compare_outputs",
+              description="Price a probe grid with both specs; agree only if every probe matches."]
+
+  extract_c  [shape=box, prompt_template="prompts/extract_c.md", working_dir="{_run_artefact_dir}",
+              output_schema="extract_c_outputs", model="opus", permission_mode="auto",
+              description="Tie-break extraction, only when A and B disagree."]
+
+  vote       [shape=box, runner=script, script="scripts/vote.sh",
+              working_dir="{_run_artefact_dir}", output_schema="vote_outputs",
+              description="Majority of three; exits non-zero (run stops) when no two agree."]
+
+  done       [shape=Msquare]
+
+  start     -> load_item
+  load_item -> extract_a
+  extract_a -> extract_b
+  extract_b -> compare
+  compare   -> done      [condition="spec_agreed == true",  label="A and B agree"]
+  compare   -> extract_c [condition="spec_agreed == false", label="A and B disagree"]
+  extract_c -> vote
+  vote      -> done
+}

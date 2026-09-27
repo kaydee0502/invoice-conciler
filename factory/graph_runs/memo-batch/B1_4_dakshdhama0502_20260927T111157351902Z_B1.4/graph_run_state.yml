@@ -1,0 +1,180 @@
+metadata:
+  run_id: 1c9a4cfd-5375-4c48-a56d-dd434e7b906b
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: memo-batch
+  flow_dot: factory/flows/memo-batch/memo-batch.dot
+  flow_dir: factory/flows/memo-batch
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_4
+  timestamp: 20260927T111157351902Z
+  started_at: '2026-09-27T11:11:57Z'
+  completed_at: '2026-09-27T11:12:48Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z
+    fanout_node: memos_fanout
+    branch_id: B1.4
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:11:57Z'
+      completed_at: '2026-09-27T11:11:57Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    write_memos:
+      status: done
+      agent_id: null
+      agent_session_id: 05bbf0ea-2a8e-4862-87a1-bf7523d0d91c
+      started_at: '2026-09-27T11:12:08Z'
+      completed_at: '2026-09-27T11:12:48Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T11:12:48Z'
+      validation_feedback: null
+      summary: "Wrote 3 memos for batch alpine-1 (two escalations for exactly-50kg\
+        \ consignments AE-3005 and AE-3092, one dispute for the missing 5% volume\
+        \ discount on ALPINE-0726, \u20B91,007.46); memos checker passed with exit\
+        \ 0; manifest written."
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 2578
+        cache_read_input_tokens: 105511
+        cache_creation_input_tokens: 21870
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    check_memos:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:12:48Z'
+      completed_at: '2026-09-27T11:12:48Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:12:48Z'
+      completed_at: '2026-09-27T11:12:48Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      memo_manifest: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T111157351902Z_B1.4/memo-manifest.json
+      memo_check: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T111157351902Z_B1.4/memo-check.json
+      memo_next: done
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: alpine-1
+      carrier: alpine
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/alpine-1.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/alpine-1
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 3
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111157351902Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T111157351902Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      memo_manifest: null
+      memo_check: null
+      memo_next: null
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: alpine-1
+      carrier: alpine
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-briefs/alpine-1.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z/memo-batches/alpine-1
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 3
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111157351902Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T111157351902Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T11:11:57Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T11:12:08Z'
+  kind: node_entered
+  node: write_memos
+- t: '2026-09-27T11:12:48Z'
+  kind: validation_passed
+  node: write_memos
+  agent_session_id: 05bbf0ea-2a8e-4862-87a1-bf7523d0d91c
+- t: '2026-09-27T11:12:48Z'
+  kind: node_entered
+  node: check_memos
+- t: '2026-09-27T11:12:48Z'
+  kind: script_node_ran
+  node: check_memos
+  exit_code: 0
+- t: '2026-09-27T11:12:48Z'
+  kind: validation_passed
+  node: check_memos
+  agent_session_id: null
+- t: '2026-09-27T11:12:48Z'
+  kind: branch_auto_resolved
+  node: check_memos
+  chose: done
+- t: '2026-09-27T11:12:48Z'
+  kind: run_completed

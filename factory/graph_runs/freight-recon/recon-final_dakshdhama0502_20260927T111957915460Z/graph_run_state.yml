@@ -1,0 +1,1145 @@
+metadata:
+  run_id: 8bac6e88-8be9-4e0a-ae05-8437ca458281
+  userid: dakshdhama0502
+  orchestrator_session_id: fecd768d-f0fd-4851-af68-ab69b2fedcaf
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: freight-recon
+  flow_dot: factory/flows/freight-recon/freight-recon.dot
+  flow_dir: factory/flows/freight-recon
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: recon-final
+  timestamp: 20260927T111957915460Z
+  started_at: '2026-09-27T11:19:58Z'
+  completed_at: '2026-09-27T14:04:44Z'
+  state: completed
+  parent_run: null
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:19:58Z'
+      completed_at: '2026-09-27T11:19:58Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    ingest:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:19:58Z'
+      completed_at: '2026-09-27T11:19:58Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    match:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:19:58Z'
+      completed_at: '2026-09-27T11:19:58Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    plan_contracts:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:19:58Z'
+      completed_at: '2026-09-27T11:19:58Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    specs_fanout:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:19:58Z'
+      completed_at: '2026-09-27T11:23:10Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.1
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T112004263048Z_B1.1
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.2
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T112005037694Z_B1.2
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.3
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T112005916041Z_B1.3
+        inline_root_node: null
+        failure_reason: null
+      join_history: []
+    specs_join:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: null
+      completed_at: '2026-09-27T11:23:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history:
+      - sequence: 1
+        triggered_by: B1.2
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - rate_specs
+        fired_at: '2026-09-27T11:21:50Z'
+        triggered_from_node: null
+      - sequence: 2
+        triggered_by: B1.1
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - rate_specs
+        fired_at: '2026-09-27T11:22:06Z'
+        triggered_from_node: null
+      - sequence: 3
+        triggered_by: B1.3
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - rate_specs
+        fired_at: '2026-09-27T11:23:09Z'
+        triggered_from_node: null
+    spec_branch:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:10Z'
+      completed_at: '2026-09-27T11:23:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    check_specs:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:35Z'
+      completed_at: '2026-09-27T11:23:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    price:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:35Z'
+      completed_at: '2026-09-27T11:23:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    assemble:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:35Z'
+      completed_at: '2026-09-27T11:23:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    plan_memos:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:35Z'
+      completed_at: '2026-09-27T11:23:36Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    memos_fanout:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:36Z'
+      completed_at: '2026-09-27T14:04:07Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.4
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.5
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_5_dakshdhama0502_20260927T112344848603Z_B1.5
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.6
+        status: done
+        subflow_run_dir: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_6_dakshdhama0502_20260927T112345813687Z_B1.6
+        inline_root_node: null
+        failure_reason: null
+      join_history: []
+    memo_branch:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:04:07Z'
+      completed_at: '2026-09-27T14:04:08Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    memos_join:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: null
+      completed_at: '2026-09-27T14:04:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history:
+      - sequence: 1
+        triggered_by: B1.4
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - memo_batches_done
+        fired_at: '2026-09-27T14:04:42Z'
+        triggered_from_node: null
+      - sequence: 2
+        triggered_by: B1.5
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - memo_batches_done
+        fired_at: '2026-09-27T14:04:43Z'
+        triggered_from_node: null
+      - sequence: 3
+        triggered_by: B1.6
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - memo_batches_done
+        fired_at: '2026-09-27T14:04:43Z'
+        triggered_from_node: null
+    publish:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:04:44Z'
+      completed_at: '2026-09-27T14:04:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:04:44Z'
+      completed_at: '2026-09-27T14:04:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/publish-manifest.json
+      _branches:
+      - branch_id: B1
+        source_node: memo_branch
+        status: done
+      memo_batches_done: 3
+    parent_node: null
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: null
+      match: null
+      contract_plan: null
+      contract_items: null
+      rate_spec: null
+      rate_specs: null
+      extract_count: null
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+    next_child: 6
+  B1.1:
+    branch_id: B1.1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_1_dakshdhama0502_20260927T112004263048Z_B1.1/rate-spec.json
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: alpine
+    parent_node: specs_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: alpine
+    next_child: 0
+  B1.2:
+    branch_id: B1.2
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_2_dakshdhama0502_20260927T112005037694Z_B1.2/rate-spec.json
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: falcon
+    parent_node: specs_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: falcon
+    next_child: 0
+  B1.3:
+    branch_id: B1.3
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T112005916041Z_B1.3/rate-spec.json
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: sagar
+    parent_node: specs_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: null
+      price: null
+      review_count: null
+      adjudication: null
+      report: null
+      report_index: null
+      memo_plan: null
+      memo_batches: null
+      memo_item_count: null
+      publish_dir: .
+      publish_manifest: null
+      item: sagar
+    next_child: 0
+  B1.4:
+    branch_id: B1.4
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 1
+    parent_node: memos_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 1
+    next_child: 0
+  B1.5:
+    branch_id: B1.5
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 2
+    parent_node: memos_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 2
+    next_child: 0
+  B1.6:
+    branch_id: B1.6
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 3
+    parent_node: memos_fanout
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T111957915460Z
+      _run_descriptor: recon-final
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      contracts_dir: data/contracts
+      ingest: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/ingest.json
+      match: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/match.json
+      contract_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/contract-plan.json
+      contract_items:
+      - alpine
+      - falcon
+      - sagar
+      rate_spec: null
+      rate_specs: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/rate-specs.json
+      extract_count: 3
+      use_spec_cache: 'yes'
+      spec_cache_dir: factory/cache/rate-specs
+      specs_check: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/specs-check.json
+      price: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/price.json
+      review_count: 0
+      adjudication: null
+      report: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/reconciliation-report.json
+      report_index: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/report-index.json
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      memo_batches:
+      - 1
+      - 2
+      - 3
+      memo_item_count: 17
+      publish_dir: .
+      publish_manifest: null
+      _branches:
+      - branch_id: B1
+        source_node: spec_branch
+        status: done
+      item: 3
+    next_child: 0
+events:
+- t: '2026-09-27T11:19:58Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T11:19:58Z'
+  kind: node_entered
+  node: ingest
+- t: '2026-09-27T11:19:58Z'
+  kind: script_node_ran
+  node: ingest
+  exit_code: 0
+- t: '2026-09-27T11:19:58Z'
+  kind: validation_passed
+  node: ingest
+  agent_session_id: null
+- t: '2026-09-27T11:19:58Z'
+  kind: node_entered
+  node: match
+- t: '2026-09-27T11:19:58Z'
+  kind: script_node_ran
+  node: match
+  exit_code: 0
+- t: '2026-09-27T11:19:58Z'
+  kind: validation_passed
+  node: match
+  agent_session_id: null
+- t: '2026-09-27T11:19:58Z'
+  kind: node_entered
+  node: plan_contracts
+- t: '2026-09-27T11:19:58Z'
+  kind: script_node_ran
+  node: plan_contracts
+  exit_code: 0
+- t: '2026-09-27T11:19:58Z'
+  kind: validation_passed
+  node: plan_contracts
+  agent_session_id: null
+- t: '2026-09-27T11:19:58Z'
+  kind: branch_auto_resolved
+  node: plan_contracts
+  chose: specs_fanout
+- t: '2026-09-27T11:19:58Z'
+  kind: node_entered
+  node: specs_fanout
+- t: '2026-09-27T11:20:03Z'
+  kind: dynamic_fanout
+  node: specs_fanout
+  count: 3
+  source: contract_items
+  branch_ids:
+  - B1.1
+  - B1.2
+  - B1.3
+- t: '2026-09-27T11:21:50Z'
+  kind: reducer_fired
+  node: specs_join
+  branch_id: B1.2
+  output_keys:
+  - rate_specs
+- t: '2026-09-27T11:22:06Z'
+  kind: reducer_fired
+  node: specs_join
+  branch_id: B1.1
+  output_keys:
+  - rate_specs
+- t: '2026-09-27T11:23:09Z'
+  kind: reducer_fired
+  node: specs_join
+  branch_id: B1.3
+  output_keys:
+  - rate_specs
+- t: '2026-09-27T11:23:09Z'
+  kind: join_ready_to_fire_after_fanout
+  join: specs_join
+  fanout: specs_fanout
+- t: '2026-09-27T11:23:10Z'
+  kind: dynamic_fanout_complete
+  node: specs_fanout
+  branches:
+  - B1.1
+  - B1.2
+  - B1.3
+  errored_branches: []
+- t: '2026-09-27T11:23:35Z'
+  kind: subflow_template_passthrough
+  node: spec_branch
+- t: '2026-09-27T11:23:35Z'
+  kind: join_fired
+  join: specs_join
+  downstream: check_specs
+  errored_branches: []
+- t: '2026-09-27T11:23:35Z'
+  kind: script_node_ran
+  node: check_specs
+  exit_code: 0
+- t: '2026-09-27T11:23:35Z'
+  kind: validation_passed
+  node: check_specs
+  agent_session_id: null
+- t: '2026-09-27T11:23:35Z'
+  kind: node_entered
+  node: price
+- t: '2026-09-27T11:23:35Z'
+  kind: script_node_ran
+  node: price
+  exit_code: 0
+- t: '2026-09-27T11:23:35Z'
+  kind: validation_passed
+  node: price
+  agent_session_id: null
+- t: '2026-09-27T11:23:35Z'
+  kind: branch_auto_resolved
+  node: price
+  chose: assemble
+- t: '2026-09-27T11:23:35Z'
+  kind: node_entered
+  node: assemble
+- t: '2026-09-27T11:23:35Z'
+  kind: script_node_ran
+  node: assemble
+  exit_code: 0
+- t: '2026-09-27T11:23:35Z'
+  kind: validation_passed
+  node: assemble
+  agent_session_id: null
+- t: '2026-09-27T11:23:35Z'
+  kind: node_entered
+  node: plan_memos
+- t: '2026-09-27T11:23:36Z'
+  kind: script_node_ran
+  node: plan_memos
+  exit_code: 0
+- t: '2026-09-27T11:23:36Z'
+  kind: validation_passed
+  node: plan_memos
+  agent_session_id: null
+- t: '2026-09-27T11:23:36Z'
+  kind: branch_auto_resolved
+  node: plan_memos
+  chose: memos_fanout
+- t: '2026-09-27T11:23:36Z'
+  kind: node_entered
+  node: memos_fanout
+- t: '2026-09-27T11:23:43Z'
+  kind: dynamic_fanout
+  node: memos_fanout
+  count: 3
+  source: memo_batches
+  branch_ids:
+  - B1.4
+  - B1.5
+  - B1.6
+- t: '2026-09-27T14:04:07Z'
+  kind: dynamic_fanout_complete
+  node: memos_fanout
+  branches:
+  - B1.4
+  - B1.5
+  - B1.6
+  errored_branches: []
+- t: '2026-09-27T14:04:08Z'
+  kind: subflow_template_passthrough
+  node: memo_branch
+- t: '2026-09-27T14:04:42Z'
+  kind: reducer_fired
+  node: memos_join
+  branch_id: B1.4
+  output_keys:
+  - memo_batches_done
+- t: '2026-09-27T14:04:42Z'
+  kind: join_ready_to_fire_after_fanout
+  join: memos_join
+  fanout: memos_fanout
+- t: '2026-09-27T14:04:43Z'
+  kind: reducer_fired
+  node: memos_join
+  branch_id: B1.5
+  output_keys:
+  - memo_batches_done
+- t: '2026-09-27T14:04:43Z'
+  kind: join_ready_to_fire_after_fanout
+  join: memos_join
+  fanout: memos_fanout
+- t: '2026-09-27T14:04:43Z'
+  kind: reducer_fired
+  node: memos_join
+  branch_id: B1.6
+  output_keys:
+  - memo_batches_done
+- t: '2026-09-27T14:04:43Z'
+  kind: join_ready_to_fire_after_fanout
+  join: memos_join
+  fanout: memos_fanout
+- t: '2026-09-27T14:04:44Z'
+  kind: join_fired
+  join: memos_join
+  downstream: publish
+  errored_branches: []
+- t: '2026-09-27T14:04:44Z'
+  kind: script_node_ran
+  node: publish
+  exit_code: 0
+- t: '2026-09-27T14:04:44Z'
+  kind: validation_passed
+  node: publish
+  agent_session_id: null
+- t: '2026-09-27T14:04:44Z'
+  kind: run_completed

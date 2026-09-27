@@ -1,0 +1,34 @@
+{
+  "_session_id": "script:specdiff",
+  "agreed": true,
+  "chosen": "spec_a",
+  "probe_count": 172,
+  "static_problems": {
+    "spec_a": [],
+    "spec_b": [],
+    "spec_c": []
+  },
+  "pairs": {
+    "spec_a~spec_b": [
+      {
+        "field": "accessorials_policy.closed_list",
+        "a": false,
+        "b": true
+      }
+    ],
+    "spec_a~spec_c": [],
+    "spec_b~spec_c": [
+      {
+        "field": "accessorials_policy.closed_list",
+        "a": true,
+        "b": false
+      }
+    ]
+  },
+  "carrier": "sagar",
+  "candidates": [
+    "spec_a",
+    "spec_b",
+    "spec_c"
+  ]
+}

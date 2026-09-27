@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rate-spec extraction comparison report",
+  "type": "object",
+  "required": ["_session_id", "carrier", "candidates", "agreed", "chosen", "probe_count", "static_problems", "pairs"],
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "agreed": { "type": "boolean" },
+    "chosen": { "type": ["string", "null"] },
+    "probe_count": { "type": "integer", "minimum": 1 }
+  }
+}

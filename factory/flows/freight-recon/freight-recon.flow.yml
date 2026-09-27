@@ -1,0 +1,75 @@
+# Companion schema for freight-recon.dot.
+output_schemas:
+  ingest_outputs:
+    files:
+      - { name: ingest, path: "{_run_artefact_dir}/ingest.json", definition: ingest }
+    sets_variables: { ingest: ingest }
+
+  match_outputs:
+    files:
+      - { name: match, path: "{_run_artefact_dir}/match.json", definition: match }
+    sets_variables: { match: match }
+
+  plan_outputs:
+    files:
+      - { name: contract_plan, path: "{_run_artefact_dir}/contract-plan.json", definition: contract-plan }
+    sets_variables: { contract_plan: contract_plan }
+    required_variables: [contract_items, extract_count, rate_specs]
+
+  check_specs_outputs:
+    files:
+      - { name: specs_check, path: "{_run_artefact_dir}/specs-check.json", definition: specs-check }
+    sets_variables: { specs_check: specs_check }
+
+  price_outputs:
+    files:
+      - { name: price, path: "{_run_artefact_dir}/price.json", definition: price }
+    sets_variables: { price: price }
+
+  adjudicate_outputs:
+    files:
+      - { name: adjudication, path: "{_run_artefact_dir}/adjudication.json", definition: adjudication }
+    sets_variables: { adjudication: adjudication }
+
+  assemble_outputs:
+    files:
+      - { name: report_index, path: "{_run_artefact_dir}/report-index.json", definition: report-index }
+    sets_variables: { report_index: report_index }
+    required_variables: [report]
+
+  plan_memos_outputs:
+    files:
+      - { name: memo_plan, path: "{_run_artefact_dir}/memo-plan.json", definition: memo-plan }
+    sets_variables: { memo_plan: memo_plan }
+    required_variables: [memo_batches, memo_item_count]
+
+  publish_outputs:
+    files:
+      - { name: publish_manifest, path: "{_run_artefact_dir}/publish-manifest.json", definition: publish-manifest }
+    sets_variables: { publish_manifest: publish_manifest }
+
+variables:
+  invoices_dir:   { type: string, default: data/invoices }
+  shipments_path: { type: string, default: data/shipments.json }
+  contracts_dir:  { type: string, default: data/contracts }
+  ingest:         { type: path }
+  match:          { type: path }
+  contract_plan:  { type: path }
+  contract_items: { type: list, items: string }
+  rate_spec:      { type: string }
+  rate_specs:     { type: string }
+  extract_count:  { type: string }
+  use_spec_cache: { type: string, default: "yes" }
+  spec_cache_dir: { type: string, default: factory/cache/rate-specs }
+  specs_check:    { type: path }
+  price:          { type: path }
+  review_count:   { type: string }
+  adjudication:   { type: path }
+  report:         { type: string }
+  report_index:   { type: path }
+  memo_plan:      { type: path }
+  memo_batches:   { type: list, items: string }
+  memo_item_count: { type: string }
+  memo_batches_done: { type: string, default: "0" }
+  publish_dir:    { type: string, default: "." }
+  publish_manifest: { type: path }

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rate spec: one carrier contract as data",
+  "description": "Produced by a contract-extraction worker; evaluated by reconlib/ratespec.py. Every rule cites its clause.",
+  "type": "object",
+  "required": ["_session_id", "carrier", "contract_file", "term", "services_offered", "derived_quantities",
+               "charges", "accessorials_policy", "invoice_adjustments", "document_rules", "ambiguities"],
+  "additionalProperties": false,
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "_provenance": { "type": "object" },
+    "carrier": { "type": "string", "minLength": 1 },
+    "contract_file": { "type": "string", "minLength": 1 },
+    "agreement_ref": { "type": ["string", "null"] },
+    "term": {
+      "type": "object", "required": ["from", "to", "clause"], "additionalProperties": false,
+      "properties": {
+        "from": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "to": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "clause": { "$ref": "#/$defs/clause" }
+      }
+    },
+    "services_offered": {
+      "type": "object", "required": ["values", "clause"], "additionalProperties": false,
+      "properties": {
+        "values": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "clause": { "$ref": "#/$defs/clause" }
+      }
+    },
+    "derived_quantities": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "expr", "clause"], "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "description": { "type": "string" },
+          "expr": { "$ref": "#/$defs/expr" }, "clause": { "$ref": "#/$defs/clause" }
+        }
+      }
+    },
+    "charges": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["id", "label", "amount", "clause"], "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "label": { "type": "string", "minLength": 1 },
+          "when": { "oneOf": [ { "type": "null" }, { "$ref": "#/$defs/cond" } ] },
+          "amount": { "$ref": "#/$defs/expr" },
+          "clause": { "$ref": "#/$defs/clause" },
+          "quote": { "type": "string" }
+        }
+      }
+    },
+    "accessorials_policy": {
+      "type": "object", "required": ["closed_list", "clause"], "additionalProperties": false,
+      "properties": {
+        "closed_list": { "type": "boolean", "description": "true when the contract says charges outside its schedule are not payable" },
+        "clause": { "$ref": "#/$defs/clause" }
+      }
+    },
+    "invoice_adjustments": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "label", "kind", "percent", "when", "clause"], "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "label": { "type": "string" },
+          "kind": { "const": "percent_of_invoice_total" },
+          "percent": { "$ref": "#/$defs/num", "description": "signed: -5 for a 5% discount" },
+          "when": {
+            "type": ["object", "null"], "required": ["metric", "op", "value"], "additionalProperties": false,
+            "properties": {
+              "metric": { "enum": ["consignments_in_calendar_month"] },
+              "op": { "enum": ["gt", "gte", "lt", "lte", "eq"] },
+              "value": { "$ref": "#/$defs/num" }
+            }
+          },
+          "clause": { "$ref": "#/$defs/clause" }, "quote": { "type": "string" }
+        }
+      }
+    },
+    "document_rules": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "rule", "clause"], "additionalProperties": false,
+        "properties": {
+          "id": { "enum": ["credit_note_must_cover_full_correction", "unmatched_lines_not_payable",
+                           "credit_notes_permitted", "dispute_window_days", "other"] },
+          "rule": { "type": "string", "minLength": 1 },
+          "value": {},
+          "clause": { "$ref": "#/$defs/clause" }
+        }
+      }
+    },
+    "ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["id", "clause", "description"], "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "clause": { "$ref": "#/$defs/clause" },
+          "description": { "type": "string", "minLength": 1 },
+          "when": { "oneOf": [ { "type": "null" }, { "$ref": "#/$defs/cond" } ] }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "clause": { "type": "string", "minLength": 1, "description": "e.g. 'falcon-freight.md §1'" },
+    "num": { "oneOf": [ { "type": "number" }, { "type": "string", "pattern": "^-?\\d+(\\.\\d+)?$" } ] },
+    "field": { "enum": ["distance_km", "billed_weight_kg", "declared_value_inr", "service_level", "special_handling", "ship_date"] },
+    "expr": {
+      "oneOf": [
+        { "type": "object", "required": ["const"], "additionalProperties": false, "properties": { "const": { "$ref": "#/$defs/num" } } },
+        { "type": "object", "required": ["field"], "additionalProperties": false, "properties": { "field": { "enum": ["distance_km", "billed_weight_kg", "declared_value_inr"] } } },
+        { "type": "object", "required": ["qty"], "additionalProperties": false, "properties": { "qty": { "$ref": "#/$defs/id" } } },
+        { "type": "object", "required": ["charge"], "additionalProperties": false, "properties": { "charge": { "$ref": "#/$defs/id" } } },
+        { "type": "object", "required": ["add"], "additionalProperties": false, "properties": { "add": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expr" } } } },
+        { "type": "object", "required": ["mul"], "additionalProperties": false, "properties": { "mul": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expr" } } } },
+        { "type": "object", "required": ["max"], "additionalProperties": false, "properties": { "max": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expr" } } } },
+        { "type": "object", "required": ["min"], "additionalProperties": false, "properties": { "min": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/expr" } } } },
+        { "type": "object", "required": ["percent", "of"], "additionalProperties": false, "properties": { "percent": { "$ref": "#/$defs/num" }, "of": { "$ref": "#/$defs/expr" } } },
+        { "type": "object", "required": ["tiered"], "additionalProperties": false, "properties": { "tiered": {
+            "type": "object", "required": ["on", "tiers"], "additionalProperties": false,
+            "properties": {
+              "on": { "$ref": "#/$defs/expr" },
+              "tiers": { "type": "array", "minItems": 1, "items": {
+                "type": "object", "additionalProperties": false,
+                "properties": {
+                  "gt": { "$ref": "#/$defs/num" }, "gte": { "$ref": "#/$defs/num" },
+                  "lt": { "$ref": "#/$defs/num" }, "lte": { "$ref": "#/$defs/num" },
+                  "value": { "$ref": "#/$defs/expr" },
+                  "out_of_card": { "const": true },
+                  "clause": { "$ref": "#/$defs/clause" }
+                },
+                "oneOf": [ { "required": ["value"] }, { "required": ["out_of_card"] } ]
+              } }
+            } } } }
+      ]
+    },
+    "cond": {
+      "oneOf": [
+        { "type": "object", "required": ["field", "op", "value"], "additionalProperties": false,
+          "properties": { "field": { "$ref": "#/$defs/field" }, "op": { "enum": ["eq", "ne", "in", "contains", "gt", "gte", "lt", "lte"] }, "value": {} } },
+        { "type": "object", "required": ["qty", "op", "value"], "additionalProperties": false,
+          "properties": { "qty": { "$ref": "#/$defs/id" }, "op": { "enum": ["eq", "ne", "gt", "gte", "lt", "lte"] }, "value": { "$ref": "#/$defs/num" } } },
+        { "type": "object", "required": ["all"], "additionalProperties": false, "properties": { "all": { "type": "array", "items": { "$ref": "#/$defs/cond" } } } },
+        { "type": "object", "required": ["any"], "additionalProperties": false, "properties": { "any": { "type": "array", "items": { "$ref": "#/$defs/cond" } } } },
+        { "type": "object", "required": ["not"], "additionalProperties": false, "properties": { "not": { "$ref": "#/$defs/cond" } } }
+      ]
+    }
+  }
+}

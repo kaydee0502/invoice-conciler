@@ -1,0 +1,43 @@
+{
+  "_session_id": "script:plan_contracts",
+  "stage": "plan_contracts",
+  "contract_items": [
+    {
+      "carrier": "alpine",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/alpine-express.md",
+      "contract_file": "alpine-express.md",
+      "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": 122
+    },
+    {
+      "carrier": "falcon",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/falcon-freight.md",
+      "contract_file": "falcon-freight.md",
+      "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": 108
+    },
+    {
+      "carrier": "sagar",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/sagar-roadlines.md",
+      "contract_file": "sagar-roadlines.md",
+      "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": 152
+    }
+  ],
+  "unused_contracts": []
+}

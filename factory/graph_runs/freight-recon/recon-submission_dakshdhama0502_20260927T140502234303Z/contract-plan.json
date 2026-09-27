@@ -1,0 +1,52 @@
+{
+  "_session_id": "script:plan_contracts",
+  "stage": "plan_contracts",
+  "contract_items": [
+    {
+      "carrier": "alpine",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/alpine-express.md",
+      "contract_file": "alpine-express.md",
+      "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+      "spec_cache_key": "a9eee91af391f2ade6aab088260eced2192cdbcc670838c3a8d2c1ccf4d228dc",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": "122"
+    },
+    {
+      "carrier": "falcon",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/falcon-freight.md",
+      "contract_file": "falcon-freight.md",
+      "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+      "spec_cache_key": "b45248af265bd80c158f0699ebb3176909307252b0e92e4e9fc42f89f042bd66",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": "108"
+    },
+    {
+      "carrier": "sagar",
+      "contract_path": "/home/dax/stage2-kit/data/contracts/sagar-roadlines.md",
+      "contract_file": "sagar-roadlines.md",
+      "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+      "spec_cache_key": "6013dcba752d5cf7a6dce42da22b1b0c3d020ba18ec177711790c417b33e27c2",
+      "shipments_path": "/home/dax/stage2-kit/data/shipments.json",
+      "recon_flow_dir": "/home/dax/stage2-kit/factory/flows/freight-recon",
+      "recon_python": "/home/dax/stage2-kit/orchestrator/.venv/bin/python",
+      "service_levels": "express, standard",
+      "handling_flags": "cold_chain, fragile, residential",
+      "shipment_count": "152"
+    }
+  ],
+  "to_extract": [
+    "alpine",
+    "falcon",
+    "sagar"
+  ],
+  "from_cache": {},
+  "unused_contracts": []
+}

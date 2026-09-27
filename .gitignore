@@ -1,0 +1,10 @@
+*:Zone.Identifier
+orchestrator/.venv/
+factory/factory-prefs.yml
+__pycache__/
+factory/cache/
+# runtime process state (not evidence)
+.graph_run_state.lock
+factory/execution/temporary/**/pid
+factory/execution/temporary/**/tmux-session
+*.tmp

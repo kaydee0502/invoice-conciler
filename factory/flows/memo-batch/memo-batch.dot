@@ -1,0 +1,28 @@
+// factory/flows/memo-batch/memo-batch.dot
+// One batch of non-accept items -> one memo each. The checker is the
+// backstop: one retry with its feedback, then the run stops.
+
+digraph memo_batch {
+  graph [label="Memo batch"]
+
+  start       [shape=Mdiamond]
+
+  load_item   [shape=box, runner=script, script="scripts/load_item.sh", working_dir="{_run_artefact_dir}",
+               output_schema="load_outputs", description="Resolve this branch's batch id to its plan entry."]
+
+  write_memos [shape=box, prompt_template="prompts/write_memos.md", working_dir="{_run_artefact_dir}",
+               output_schema="write_outputs", model="opus", permission_mode="auto",
+               description="Write one memo per item from the brief; quote only the brief's amounts."]
+
+  check_memos [shape=box, runner=script, script="scripts/check_memos.sh", working_dir="{_run_artefact_dir}",
+               output_schema="check_outputs",
+               description="Every item has a memo naming invoice/ref/disposition and quoting only brief amounts."]
+
+  done        [shape=Msquare]
+
+  start       -> load_item
+  load_item   -> write_memos
+  write_memos -> check_memos
+  check_memos -> done        [condition="memo_next == done",  label="all memos pass"]
+  check_memos -> write_memos [condition="memo_next == retry", label="retry once with checker feedback"]
+}

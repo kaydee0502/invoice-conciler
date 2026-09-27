@@ -1,0 +1,51 @@
+# Companion schema for contract-spec.dot. Inputs from the parent (subflow
+# inputs=): carrier (the fanout item) and contract_plan (the plan file);
+# load_item resolves the rest.
+output_schemas:
+  load_outputs:
+    files: []
+    required_variables: [contract_path, contract_file, shipments_path, recon_flow_dir, recon_python,
+                         service_levels, handling_flags]
+  extract_a_outputs:
+    files:
+      - { name: spec_a, path: "{_run_artefact_dir}/candidates/spec_a.json", definition: rate-spec }
+    sets_variables: { spec_a: spec_a }
+  extract_b_outputs:
+    files:
+      - { name: spec_b, path: "{_run_artefact_dir}/candidates/spec_b.json", definition: rate-spec }
+    sets_variables: { spec_b: spec_b }
+  extract_c_outputs:
+    files:
+      - { name: spec_c, path: "{_run_artefact_dir}/candidates/spec_c.json", definition: rate-spec }
+    sets_variables: { spec_c: spec_c }
+  compare_outputs:
+    files:
+      - { name: compare_report, path: "{_run_artefact_dir}/compare-report.json", definition: spec-compare }
+    sets_variables: { compare_report: compare_report }
+    required_variables: [spec_agreed]
+  vote_outputs:
+    files:
+      - { name: vote_report, path: "{_run_artefact_dir}/vote-report.json", definition: spec-compare }
+    sets_variables: { vote_report: vote_report }
+    required_variables: [spec_agreed, rate_spec]
+
+variables:
+  carrier: { type: string }
+  contract_plan: { type: string }
+  spec_cache_key: { type: string }
+  contract_path: { type: string }
+  contract_file: { type: string }
+  contract_sha256: { type: string }
+  shipments_path: { type: string }
+  recon_flow_dir: { type: string }
+  recon_python: { type: string }
+  service_levels: { type: string }
+  handling_flags: { type: string }
+  shipment_count: { type: string }
+  spec_a: { type: path }
+  spec_b: { type: path }
+  spec_c: { type: path }
+  compare_report: { type: path }
+  vote_report: { type: path }
+  spec_agreed: { type: string }
+  rate_spec: { type: string }

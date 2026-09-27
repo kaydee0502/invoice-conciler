@@ -1,0 +1,5 @@
+[11:20:08 B1_2] spawned extract_a e4ff7104-f7cb-42f4-b407-004c7f9a25c5
+[11:20:52 B1_2] extract_a passed; next: moved
+[11:20:55 B1_2] spawned extract_b 1b41c117-5554-4b76-9b42-ca4c9c1e7511
+[11:21:50 B1_2] extract_b passed; next: end
+[11:21:50 B1_2] DONE

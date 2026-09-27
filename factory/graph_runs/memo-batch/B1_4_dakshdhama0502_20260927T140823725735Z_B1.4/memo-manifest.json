@@ -1,0 +1,6 @@
+{"_session_id": "d8e5c4d8-7831-41e8-a93f-2053106b815a", "batch_id": 1,
+ "memos": [
+  {"item_id": "line:ALPINE-0726#5", "memo_file": "ALPINE-0726__AE-3005.md"},
+  {"item_id": "line:ALPINE-0926#17", "memo_file": "ALPINE-0926__AE-3092.md"},
+  {"item_id": "finding:ALPINE-0726:INVOICE_ADJUSTMENT", "memo_file": "ALPINE-0726__invoice_adjustment.md"}
+ ]}

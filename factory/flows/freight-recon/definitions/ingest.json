@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ingest output: normalized billing lines",
+  "type": "object",
+  "required": ["_session_id", "stage", "input_fingerprints", "document_count", "line_count", "documents", "lines", "anomalies"],
+  "properties": {
+    "_session_id": { "type": "string", "minLength": 1 },
+    "stage": { "const": "ingest" },
+    "input_fingerprints": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" } },
+    "document_count": { "type": "integer", "minimum": 1 },
+    "line_count": { "type": "integer", "minimum": 1 },
+    "documents": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["doc_id", "doc_type", "carrier", "source_file", "printed_total", "header_adjustments", "line_keys", "line_count"],
+        "properties": {
+          "doc_id": { "type": "string", "minLength": 1 },
+          "doc_type": { "enum": ["invoice", "credit_note"] },
+          "carrier": { "type": "string", "minLength": 1 },
+          "printed_total": { "type": "number" },
+          "corrects_invoice": { "type": ["string", "null"] },
+          "header_adjustments": { "type": "array", "items": { "type": "object", "required": ["label", "amount"] } },
+          "line_keys": { "type": "array", "items": { "type": "string" } },
+          "line_count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "lines": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["line_key", "doc_id", "doc_type", "carrier", "line_no", "consignment_ref", "billed_amount", "components", "facts", "corrects", "text_notes", "source"],
+        "properties": {
+          "line_key": { "type": "string", "pattern": "^.+#[0-9]+$" },
+          "consignment_ref": { "type": "string", "minLength": 1 },
+          "billed_amount": { "type": "number" },
+          "components": { "type": "array", "items": { "type": "object", "required": ["label", "amount"], "properties": { "amount": { "type": "number" } } } },
+          "facts": { "type": "object" },
+          "corrects": { "type": ["object", "null"], "required": ["invoice", "consignment_ref"] },
+          "text_notes": { "type": "array", "items": { "type": "string" } },
+          "source": { "type": "object", "required": ["file", "locator"] }
+        }
+      }
+    },
+    "anomalies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "doc_id", "line_key", "detail"],
+        "properties": { "code": { "type": "string", "pattern": "^[A-Z_]+$" } }
+      }
+    }
+  }
+}

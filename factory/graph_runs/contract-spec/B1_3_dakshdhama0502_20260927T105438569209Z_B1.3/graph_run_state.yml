@@ -1,0 +1,241 @@
+metadata:
+  run_id: 2d0d96df-a54c-4cea-8d5c-165dda583591
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: contract-spec
+  flow_dot: factory/flows/contract-spec/contract-spec.dot
+  flow_dir: factory/flows/contract-spec
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_3
+  timestamp: 20260927T105438569209Z
+  started_at: '2026-09-27T10:54:38Z'
+  completed_at: '2026-09-27T10:57:02Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-20260927_dakshdhama0502_20260927T105435101267Z
+    fanout_node: specs_fanout
+    branch_id: B1.3
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:54:38Z'
+      completed_at: '2026-09-27T10:54:38Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: aa482604-9e90-4e3e-84ed-2fb7b4b3ad8b
+      started_at: '2026-09-27T10:54:46Z'
+      completed_at: '2026-09-27T10:55:22Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T10:55:22Z'
+      validation_feedback: null
+      summary: "Encoded sagar-roadlines.md (SRL/BFC/2025-08, term 2025-08-01..2027-07-31,\
+        \ standard service only) as charges weight_component (6.00 x billed_weight_kg,\
+        \ \xA71), distance_component (2.00 x distance_km, \xA71), cold_chain_premium\
+        \ (20% of weight+distance when special_handling contains cold_chain, \xA7\
+        3); no tiers, no derived quantities, no invoice adjustments; closed_list false;\
+        \ document rules for unmatched lines (\xA75), credit notes permitted/full\
+        \ correction (\xA76), payment due 21 days (\xA74). Checker OK on 152 shipments;\
+        \ two cold-chain lines verified by hand."
+      notes: "No ambiguities recorded: the contract is a flat linear rate with no\
+        \ bands, minimums, or rounding rules, so no boundary gaps exist.\nclosed_list\
+        \ is false because the contract never says that charges outside its schedule\
+        \ are not payable.\nNo dispute window or volume discount is stated. Express\
+        \ service is excluded through services_offered (\xA72), not through a charge.\n"
+      usage:
+        input_tokens: 6
+        output_tokens: 2374
+        cache_read_input_tokens: 109282
+        cache_creation_input_tokens: 31988
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: dc1f40b6-f025-4a9d-908d-37438d48a7e1
+      started_at: '2026-09-27T10:55:22Z'
+      completed_at: '2026-09-27T10:57:02Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T10:57:01Z'
+      validation_feedback: null
+      summary: "Encoded sagar-roadlines.md as spec_b.json: weight_component (\u20B9\
+        6/kg billed weight, \xA71) + distance_component (\u20B92/km, \xA71) + cold_chain_premium\
+        \ (20% of weight+distance components, when special_handling contains cold_chain,\
+        \ \xA73); services_offered=[standard] (\xA72); accessorials_policy.closed_list=false\
+        \ (no closed-list statement in contract); no invoice_adjustments; document_rules\
+        \ for unmatched-line non-payability, credit note requirements, and 21-day\
+        \ payment term (\xA74-6); checker confirms OK on 152 shipments and hand-verified\
+        \ math matches."
+      notes: "Recorded one ambiguity: the contract states only standard service is\
+        \ offered (\xA72)\nand gives no rate for express service, so shipments with\
+        \ service_level=express\nunder this carrier have no determinable price under\
+        \ this contract\n(ambiguity id: express_service_not_covered).\n\naccessorials_policy.closed_list\
+        \ was set to false: the contract never states that\ncharges outside its schedule\
+        \ are unpayable, it simply doesn't list any others.\nThis is an absence of\
+        \ a closed-list clause, not a contradiction, so it was not\nrecorded as a\
+        \ separate ambiguity.\n"
+      usage:
+        input_tokens: 10
+        output_tokens: 8077
+        cache_read_input_tokens: 270884
+        cache_creation_input_tokens: 43629
+        reasoning_tokens: 0
+        turns: 5
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:57:02Z'
+      completed_at: '2026-09-27T10:57:02Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:57:02Z'
+      completed_at: '2026-09-27T10:57:02Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      spec_a: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3/candidates/spec_a.json
+      spec_b: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3/candidates/spec_b.json
+      spec_c: null
+      compare_report: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3/compare-report.json
+      vote_report: null
+      spec_agreed: true
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3/rate-spec.json
+      carrier: sagar
+      contract_path: /home/dax/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_file: sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 152
+      _userid: dakshdhama0502
+      _timestamp: 20260927T105438569209Z
+      _run_descriptor: B1_3
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      spec_a: null
+      spec_b: null
+      spec_c: null
+      compare_report: null
+      vote_report: null
+      spec_agreed: null
+      rate_spec: null
+      carrier: sagar
+      contract_path: /home/dax/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_file: sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 152
+      _userid: dakshdhama0502
+      _timestamp: 20260927T105438569209Z
+      _run_descriptor: B1_3
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T105438569209Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T10:54:38Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T10:54:46Z'
+  kind: node_entered
+  node: extract_a
+- t: '2026-09-27T10:55:22Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: aa482604-9e90-4e3e-84ed-2fb7b4b3ad8b
+- t: '2026-09-27T10:55:22Z'
+  kind: node_entered
+  node: extract_b
+- t: '2026-09-27T10:57:02Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: dc1f40b6-f025-4a9d-908d-37438d48a7e1
+- t: '2026-09-27T10:57:02Z'
+  kind: node_entered
+  node: compare
+- t: '2026-09-27T10:57:02Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-27T10:57:02Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-27T10:57:02Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: done
+- t: '2026-09-27T10:57:02Z'
+  kind: run_completed

@@ -1,0 +1,473 @@
+{
+  "batch_id": "sagar-1",
+  "carrier": "sagar",
+  "contract_path": "/home/dax/stage2-kit/data/contracts/sagar-roadlines.md",
+  "items": [
+    {
+      "item_id": "line:SAGAR-CN-01#1",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-CN-01__SG-7056.md",
+      "report_entry": {
+        "invoice": "SAGAR-CN-01",
+        "consignment_ref": "SG-7056",
+        "shipment_id": "SH-4282",
+        "billed_amount": -156.0,
+        "expected_amount": -260.0,
+        "delta": 104.0,
+        "disposition": "dispute",
+        "justification": "Partial credit: SAGAR-AUG-1#6 was overbilled by ₹260.00 (sagar-roadlines.md §1), but this credit note returns only ₹156.00, leaving ₹104.00 uncorrected; the contract requires a credit note to cover the full corrected amount (sagar-roadlines.md §6).",
+        "contract_clause": "sagar-roadlines.md §1, §6"
+      },
+      "rule": "R_CREDIT_SHORT",
+      "reasons": [
+        {
+          "code": "CREDIT_SHORT",
+          "amount": 104.0,
+          "clause": "sagar-roadlines.md §1, §6",
+          "detail": "credit of ₹156.00 against an overbilling of ₹260.00 on SAGAR-AUG-1#6"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "credit",
+          "amount": -156.0
+        }
+      ],
+      "corrects_line_keys": [
+        "SAGAR-AUG-1#6"
+      ],
+      "hints": [],
+      "allowed_amounts": [
+        104.0,
+        156.0,
+        260.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-AUG-1#19",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-AUG-1__SG-7969.md",
+      "report_entry": {
+        "invoice": "SAGAR-AUG-1",
+        "consignment_ref": "SG-7969",
+        "shipment_id": null,
+        "billed_amount": 836.0,
+        "expected_amount": null,
+        "delta": null,
+        "disposition": "escalate",
+        "justification": "No BlueFin shipment matches SG-7969, so no contract amount can be computed; Each invoice line's c-note number must correspond to a Customer booking; lines that cannot be matched to a booking are not payable until reconciled. (sagar-roadlines.md §5). Possible intended reference: ref is one edit from SG-7069 (SH-4295, delivery_status 'in_transit'), which is not billed on any document. Billed ₹836.00 is held pending the carrier's correction.",
+        "contract_clause": "sagar-roadlines.md §5"
+      },
+      "rule": "R_UNMATCHED",
+      "reasons": [
+        {
+          "code": "UNMATCHED",
+          "detail": "ref is one edit from SG-7069 (SH-4295, delivery_status 'in_transit'), which is not billed on any document"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 836.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [
+        {
+          "kind": "near_ref",
+          "detail": "ref is one edit from SG-7069 (SH-4295, delivery_status 'in_transit'), which is not billed on any document",
+          "delivery_status": "in_transit",
+          "shipment_id": "SH-4295",
+          "billed_on": []
+        }
+      ],
+      "allowed_amounts": [
+        0.0,
+        836.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-AUG-2#11",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-AUG-2__SG-7086.md",
+      "report_entry": {
+        "invoice": "SAGAR-AUG-2",
+        "consignment_ref": "SG-7086",
+        "shipment_id": "SH-4312",
+        "billed_amount": 430.0,
+        "expected_amount": 390.0,
+        "delta": 40.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹40.00: billed ₹430.00, contract amount ₹390.00 (Weight component (INR 6.00 per kg of billed weight) ₹270.00 + Distance component (INR 2.00 per km of booked lane distance) ₹120.00; sagar-roadlines.md §1; shipment SH-4312: 45 kg, 60 km, standard, handling none). the printed charges sum to ₹390.00 but the line total is ₹430.00: ₹40.00 is not attributed to any charge.",
+        "contract_clause": "sagar-roadlines.md §1",
+        "notes": "anomaly LINE_COMPONENTS_MISMATCH: printed charge components do not sum to the printed line total"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "PRINTED_ARITHMETIC",
+          "amount": 40.0,
+          "detail": "the printed charges sum to ₹390.00 but the line total is ₹430.00: ₹40.00 is not attributed to any charge"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "weight_component",
+          "label": "Weight component (INR 6.00 per kg of billed weight)",
+          "amount": 270.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "distance_component",
+          "label": "Distance component (INR 2.00 per km of booked lane distance)",
+          "amount": 120.0,
+          "clause": "sagar-roadlines.md §1"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 390.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        2.0,
+        6.0,
+        40.0,
+        120.0,
+        270.0,
+        390.0,
+        430.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-JUL-1#3",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-JUL-1__SG-7003.md",
+      "report_entry": {
+        "invoice": "SAGAR-JUL-1",
+        "consignment_ref": "SG-7003",
+        "shipment_id": "SH-4229",
+        "billed_amount": 570.0,
+        "expected_amount": 530.0,
+        "delta": 40.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹40.00: billed ₹570.00, contract amount ₹530.00 (Weight component (INR 6.00 per kg of billed weight) ₹360.00 + Distance component (INR 2.00 per km of booked lane distance) ₹170.00; sagar-roadlines.md §1; shipment SH-4229: 60 kg, 85 km, standard, handling none). the printed charges sum to ₹530.00 but the line total is ₹570.00: ₹40.00 is not attributed to any charge.",
+        "contract_clause": "sagar-roadlines.md §1",
+        "notes": "anomaly LINE_COMPONENTS_MISMATCH: printed charge components do not sum to the printed line total"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "PRINTED_ARITHMETIC",
+          "amount": 40.0,
+          "detail": "the printed charges sum to ₹530.00 but the line total is ₹570.00: ₹40.00 is not attributed to any charge"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "weight_component",
+          "label": "Weight component (INR 6.00 per kg of billed weight)",
+          "amount": 360.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "distance_component",
+          "label": "Distance component (INR 2.00 per km of booked lane distance)",
+          "amount": 170.0,
+          "clause": "sagar-roadlines.md §1"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 530.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        2.0,
+        6.0,
+        40.0,
+        170.0,
+        360.0,
+        530.0,
+        570.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-JUL-1#9",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-JUL-1__SG-7009.md",
+      "report_entry": {
+        "invoice": "SAGAR-JUL-1",
+        "consignment_ref": "SG-7009",
+        "shipment_id": "SH-4235",
+        "billed_amount": 1680.0,
+        "expected_amount": 1480.0,
+        "delta": 200.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹200.00: billed ₹1,680.00, contract amount ₹1,480.00 (Weight component (INR 6.00 per kg of billed weight) ₹1,200.00 + Distance component (INR 2.00 per km of booked lane distance) ₹280.00; sagar-roadlines.md §1; shipment SH-4235: 200 kg, 140 km, standard, handling none). 'freight' billed at ₹1,680.00; the contract gives ₹1,480.00 for Weight component (INR 6.00 per kg of billed weight) ₹1,200.00 + Distance component (INR 2.00 per km of booked lane distance) ₹280.00.",
+        "contract_clause": "sagar-roadlines.md §1"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "AMOUNT_DIFFERS",
+          "amount": 200.0,
+          "clause": "sagar-roadlines.md §1",
+          "detail": "'freight' billed at ₹1,680.00; the contract gives ₹1,480.00 for Weight component (INR 6.00 per kg of billed weight) ₹1,200.00 + Distance component (INR 2.00 per km of booked lane distance) ₹280.00"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "weight_component",
+          "label": "Weight component (INR 6.00 per kg of billed weight)",
+          "amount": 1200.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "distance_component",
+          "label": "Distance component (INR 2.00 per km of booked lane distance)",
+          "amount": 280.0,
+          "clause": "sagar-roadlines.md §1"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 1680.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        2.0,
+        6.0,
+        200.0,
+        280.0,
+        1200.0,
+        1480.0,
+        1680.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-SEP-1#14",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-SEP-1__SG-7114.md",
+      "report_entry": {
+        "invoice": "SAGAR-SEP-1",
+        "consignment_ref": "SG-7114",
+        "shipment_id": "SH-4340",
+        "billed_amount": 505.0,
+        "expected_amount": 460.0,
+        "delta": 45.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹45.00: billed ₹505.00, contract amount ₹460.00 (Weight component (INR 6.00 per kg of billed weight) ₹270.00 + Distance component (INR 2.00 per km of booked lane distance) ₹190.00; sagar-roadlines.md §1; shipment SH-4340: 45 kg, 95 km, standard, handling none). 'freight' billed at ₹505.00; the contract gives ₹460.00 for Weight component (INR 6.00 per kg of billed weight) ₹270.00 + Distance component (INR 2.00 per km of booked lane distance) ₹190.00.",
+        "contract_clause": "sagar-roadlines.md §1"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "AMOUNT_DIFFERS",
+          "amount": 45.0,
+          "clause": "sagar-roadlines.md §1",
+          "detail": "'freight' billed at ₹505.00; the contract gives ₹460.00 for Weight component (INR 6.00 per kg of billed weight) ₹270.00 + Distance component (INR 2.00 per km of booked lane distance) ₹190.00"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "weight_component",
+          "label": "Weight component (INR 6.00 per kg of billed weight)",
+          "amount": 270.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "distance_component",
+          "label": "Distance component (INR 2.00 per km of booked lane distance)",
+          "amount": 190.0,
+          "clause": "sagar-roadlines.md §1"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 505.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        2.0,
+        6.0,
+        45.0,
+        190.0,
+        270.0,
+        460.0,
+        505.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-SEP-1#22",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-SEP-1__SG-7922.md",
+      "report_entry": {
+        "invoice": "SAGAR-SEP-1",
+        "consignment_ref": "SG-7922",
+        "shipment_id": null,
+        "billed_amount": 870.0,
+        "expected_amount": null,
+        "delta": null,
+        "disposition": "escalate",
+        "justification": "No BlueFin shipment matches SG-7922, so no contract amount can be computed; Each invoice line's c-note number must correspond to a Customer booking; lines that cannot be matched to a booking are not payable until reconciled. (sagar-roadlines.md §5). Possible intended reference: ref is one edit from SG-7022 (SH-4248, delivery_status 'delivered'), which is billed on ['SAGAR-JUL-1#22']; ref is one edit from SG-7122 (SH-4348, delivery_status 'in_transit'), which is not billed on any document. Billed ₹870.00 is held pending the carrier's correction.",
+        "contract_clause": "sagar-roadlines.md §5"
+      },
+      "rule": "R_UNMATCHED",
+      "reasons": [
+        {
+          "code": "UNMATCHED",
+          "detail": "ref is one edit from SG-7022 (SH-4248, delivery_status 'delivered'), which is billed on ['SAGAR-JUL-1#22']; ref is one edit from SG-7122 (SH-4348, delivery_status 'in_transit'), which is not billed on any document"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 870.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 0.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [
+        {
+          "kind": "near_ref",
+          "detail": "ref is one edit from SG-7022 (SH-4248, delivery_status 'delivered'), which is billed on ['SAGAR-JUL-1#22']",
+          "delivery_status": "delivered",
+          "shipment_id": "SH-4248",
+          "billed_on": [
+            "SAGAR-JUL-1#22"
+          ]
+        },
+        {
+          "kind": "near_ref",
+          "detail": "ref is one edit from SG-7122 (SH-4348, delivery_status 'in_transit'), which is not billed on any document",
+          "delivery_status": "in_transit",
+          "shipment_id": "SH-4348",
+          "billed_on": []
+        }
+      ],
+      "allowed_amounts": [
+        0.0,
+        870.0
+      ]
+    },
+    {
+      "item_id": "line:SAGAR-SEP-2#8",
+      "kind": "line",
+      "carrier": "sagar",
+      "memo_file": "SAGAR-SEP-2__SG-7133.md",
+      "report_entry": {
+        "invoice": "SAGAR-SEP-2",
+        "consignment_ref": "SG-7133",
+        "shipment_id": "SH-4359",
+        "billed_amount": 748.0,
+        "expected_amount": 708.0,
+        "delta": 40.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹40.00: billed ₹748.00, contract amount ₹708.00 (Weight component (INR 6.00 per kg of billed weight) ₹270.00 + Distance component (INR 2.00 per km of booked lane distance) ₹320.00 + Cold chain premium (20% of weight + distance components) ₹118.00; sagar-roadlines.md §1, §3; shipment SH-4359: 45 kg, 160 km, standard, handling ['cold_chain']). the printed charges sum to ₹708.00 but the line total is ₹748.00: ₹40.00 is not attributed to any charge.",
+        "contract_clause": "sagar-roadlines.md §1, §3",
+        "notes": "anomaly LINE_COMPONENTS_MISMATCH: printed charge components do not sum to the printed line total"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "PRINTED_ARITHMETIC",
+          "amount": 40.0,
+          "detail": "the printed charges sum to ₹708.00 but the line total is ₹748.00: ₹40.00 is not attributed to any charge"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "weight_component",
+          "label": "Weight component (INR 6.00 per kg of billed weight)",
+          "amount": 270.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "distance_component",
+          "label": "Distance component (INR 2.00 per km of booked lane distance)",
+          "amount": 320.0,
+          "clause": "sagar-roadlines.md §1"
+        },
+        {
+          "id": "cold_chain_premium",
+          "label": "Cold chain premium (20% of weight + distance components)",
+          "amount": 118.0,
+          "clause": "sagar-roadlines.md §3"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "freight",
+          "amount": 590.0
+        },
+        {
+          "label": "chill premium",
+          "amount": 118.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        2.0,
+        6.0,
+        40.0,
+        118.0,
+        270.0,
+        320.0,
+        590.0,
+        708.0,
+        748.0
+      ]
+    }
+  ]
+}

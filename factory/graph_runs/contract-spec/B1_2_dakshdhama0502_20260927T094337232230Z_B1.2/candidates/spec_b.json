@@ -1,0 +1,112 @@
+{
+  "_session_id": "cbddebeb-0f66-4e7d-9a30-ecad0e0aee2e",
+  "carrier": "falcon",
+  "contract_file": "falcon-freight.md",
+  "agreement_ref": "FF/BFC/2024-11",
+  "term": {
+    "from": "2024-12-01",
+    "to": "2026-11-30",
+    "clause": "falcon-freight.md (preamble)"
+  },
+  "services_offered": {
+    "values": ["standard", "express"],
+    "clause": "falcon-freight.md §2"
+  },
+  "derived_quantities": [],
+  "charges": [
+    {
+      "id": "base_freight",
+      "label": "Base freight (per km, by billed weight band)",
+      "clause": "falcon-freight.md §1",
+      "when": null,
+      "amount": {
+        "tiered": {
+          "on": { "field": "billed_weight_kg" },
+          "tiers": [
+            {
+              "lte": 500,
+              "value": { "mul": [ { "const": 18 }, { "field": "distance_km" } ] },
+              "clause": "falcon-freight.md §1"
+            },
+            {
+              "gte": 501,
+              "lte": 2000,
+              "value": { "mul": [ { "const": 24 }, { "field": "distance_km" } ] },
+              "clause": "falcon-freight.md §1"
+            },
+            {
+              "gt": 2000,
+              "out_of_card": true,
+              "clause": "falcon-freight.md §1"
+            }
+          ]
+        }
+      },
+      "quote": "up to and including 500 kg: ₹18.00 per km; 501 kg to 2,000 kg: ₹24.00 per km; Consignments above 2,000 kg are quoted case by case and are outside this rate card."
+    },
+    {
+      "id": "express_premium",
+      "label": "Express service premium (15% of base freight)",
+      "clause": "falcon-freight.md §2",
+      "when": { "field": "service_level", "op": "eq", "value": "express" },
+      "amount": { "percent": 15, "of": { "charge": "base_freight" } },
+      "quote": "Express service, where booked, carries a premium of 15% of the base freight."
+    },
+    {
+      "id": "fuel_surcharge",
+      "label": "Fuel surcharge (12% of freight charge)",
+      "clause": "falcon-freight.md §3",
+      "when": null,
+      "amount": {
+        "percent": 12,
+        "of": { "add": [ { "charge": "base_freight" }, { "charge": "express_premium" } ] }
+      },
+      "quote": "A fuel surcharge of 12% applies to the freight charge (base freight plus express premium, where applicable)."
+    },
+    {
+      "id": "residential_delivery",
+      "label": "Residential delivery accessorial",
+      "clause": "falcon-freight.md §4",
+      "when": { "field": "special_handling", "op": "contains", "value": "residential" },
+      "amount": { "const": 250 },
+      "quote": "Residential delivery (consignee address is a residence, or the booking is flagged residential): ₹250.00 flat per consignment."
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": true,
+    "clause": "falcon-freight.md §5"
+  },
+  "invoice_adjustments": [],
+  "document_rules": [
+    {
+      "id": "dispute_window_days",
+      "rule": "Billing disputes must be raised within 45 days of invoice date; disputed line items are payable only on resolution, undisputed items remain due.",
+      "value": 45,
+      "clause": "falcon-freight.md §7"
+    },
+    {
+      "id": "credit_notes_permitted",
+      "rule": "The Carrier may issue credit notes correcting earlier invoices; a credit note must reference the original consignment note number and state the invoice it corrects.",
+      "clause": "falcon-freight.md §8"
+    },
+    {
+      "id": "other",
+      "rule": "Carrier invoices fortnightly; payment is due 30 days from invoice date.",
+      "clause": "falcon-freight.md §6"
+    }
+  ],
+  "ambiguities": [
+    {
+      "id": "weight_tier_gap",
+      "clause": "falcon-freight.md §1",
+      "description": "The rate card defines weight bands as 'up to and including 500 kg' (rate ₹18/km) and '501 kg to 2,000 kg' (rate ₹24/km). Both bounds are stated in whole kilograms, so a fractional billed weight strictly between 500 kg and 501 kg (e.g. 500.4 kg) falls in neither band and is left undetermined by the contract's own wording.",
+      "when": {
+        "all": [
+          { "field": "billed_weight_kg", "op": "gt", "value": 500 },
+          { "field": "billed_weight_kg", "op": "lt", "value": 501 }
+        ]
+      }
+    }
+  ],
+  "notes": "Weight-based base freight rate applies per km over the whole tier (not per-kg): §1 gives a flat ₹/km rate for each weight band. Express premium (§2) and fuel surcharge (§3) are read in the order the text states them: premium is 15% of base freight only, and fuel surcharge is 12% of (base freight + express premium where applicable), not compounded further. Consignments above 2,000 kg are explicitly outside the rate card (quoted case by case) and are encoded as out_of_card rather than priced. See ambiguities for the fractional-weight gap between the 500kg and 501kg band boundaries as literally written."
+}

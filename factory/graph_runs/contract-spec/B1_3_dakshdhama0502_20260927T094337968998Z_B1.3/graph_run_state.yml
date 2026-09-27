@@ -1,0 +1,311 @@
+metadata:
+  run_id: cb9dbc67-af93-4d1e-a88e-359f979eae40
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: contract-spec
+  flow_dot: factory/flows/contract-spec/contract-spec.dot
+  flow_dir: factory/flows/contract-spec
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_3
+  timestamp: 20260927T094337968998Z
+  started_at: '2026-09-27T09:43:38Z'
+  completed_at: '2026-09-27T09:48:02Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/specs-try1_dakshdhama0502_20260927T094329270584Z
+    fanout_node: specs_fanout
+    branch_id: B1.3
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:43:38Z'
+      completed_at: '2026-09-27T09:43:38Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: dd86200d-0031-49d0-9a96-86f0b507ac15
+      started_at: '2026-09-27T09:43:56Z'
+      completed_at: '2026-09-27T09:44:55Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T09:44:55Z'
+      validation_feedback: null
+      summary: "Encoded sagar-roadlines.md (SRL/BFC/2025-08, term 2025-08-01..2027-07-31,\
+        \ standard only) as spec_a.json: charges weight_component (6.00 x billed_weight_kg,\
+        \ \xA71), distance_component (2.00 x distance_km, \xA71), cold_chain_premium\
+        \ (20% of weight+distance when special_handling contains cold_chain, \xA7\
+        3); no tiers, no minimums, no invoice adjustments; closed_list false; document\
+        \ rules for unmatched lines (\xA75), credit notes permitted / full correction\
+        \ (\xA76), payment 21 days (\xA74). Checker OK on 152 shipments; hand-verified\
+        \ SH-4234 (1704.00) and SH-4242 (535.20)."
+      notes: "No ambiguities recorded: the contract has flat per-kg and per-km rates\
+        \ with no bands or boundaries, and one conditional premium.\nCaveats: the\
+        \ term comes from the unnumbered preamble, so it is cited as \"preamble (Term)\"\
+        . The contract does not say how amounts are rounded.\nIt also does not say\
+        \ unlisted charges are not payable, so closed_list is false.\nFragile and\
+        \ residential handling carry no charge under this contract. Express is not\
+        \ offered (\xA72), so services_offered is [\"standard\"].\n"
+      usage:
+        input_tokens: 6
+        output_tokens: 2887
+        cache_read_input_tokens: 109202
+        cache_creation_input_tokens: 32255
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: eef0dbd9-b7eb-4431-ab8b-73dd9cc0046d
+      started_at: '2026-09-27T09:44:55Z'
+      completed_at: '2026-09-27T09:47:02Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T09:47:02Z'
+      validation_feedback: null
+      summary: "Encoded Sagar Roadlines contract as rate spec: weight_component (\u20B9\
+        6/kg) + distance_component (\u20B92/km) sum to freight charge, cold_chain_premium\
+        \ (20% of freight charge, when special_handling contains cold_chain), services_offered\
+        \ limited to standard, accessorials_policy closed_list=true (\xA71/\xA73 define\
+        \ freight exhaustively), document_rules for payment terms/unmatched-lines/credit-notes\
+        \ (\xA74-\xA76), no invoice_adjustments (none stated), and one ambiguity flagging\
+        \ that express service_level has no rate basis under \xA72."
+      notes: "speccheck passed: OK, priced 152 shipments without error. Hand-verified\n\
+        SH-4234 (200kg, 110km, cold_chain) = 1200 + 220 = 1420 freight, +20% = 284\n\
+        premium, total 1704.00, matching the checker's output exactly.\n\nAmbiguity\
+        \ recorded in spec: express service_level has no rate basis since\n\xA72 restricts\
+        \ the agreement to standard service only (services_offered =\n[\"standard\"\
+        ]). No sample shipments in the checker output used express, so\nthis could\
+        \ not be spot-checked against real data, but it is a genuine gap\nin the contract's\
+        \ coverage per the encoding rules.\n"
+      usage:
+        input_tokens: 12
+        output_tokens: 7606
+        cache_read_input_tokens: 343568
+        cache_creation_input_tokens: 37605
+        reasoning_tokens: 0
+        turns: 6
+        model: claude-sonnet-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:47:02Z'
+      completed_at: '2026-09-27T09:47:02Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract_c:
+      status: done
+      agent_id: null
+      agent_session_id: 1eb6115f-de07-40d5-b662-942d35cc10e9
+      started_at: '2026-09-27T09:47:02Z'
+      completed_at: '2026-09-27T09:48:02Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T09:48:02Z'
+      validation_feedback: null
+      summary: "Encoded sagar-roadlines.md (SRL/BFC/2025-08, term 2025-08-01..2027-07-31,\
+        \ standard service only) as charges weight_component (6.00 x billed_weight_kg,\
+        \ \xA71) + distance_component (2.00 x distance_km, \xA71) + cold_chain_premium\
+        \ (20% of weight+distance when special_handling contains cold_chain, \xA7\
+        3); no derived quantities, no tiers, no invoice adjustments; closed_list false;\
+        \ document rules unmatched_lines_not_payable (\xA75), credit_notes_permitted\
+        \ and credit_note_must_cover_full_correction (\xA76), other: payment due 21\
+        \ days (\xA74). Speccheck OK on 152 shipments; hand-verified SH-4242 (535.20)\
+        \ and SH-4227 (1680.00)."
+      notes: "No ambiguities recorded; the contract has no bands, minimums or boundaries\
+        \ that leave gaps.\nExpress shipments are outside services_offered (\xA72:\
+        \ only standard service is offered).\nNo dispute window is stated in the contract.\n"
+      usage:
+        input_tokens: 6
+        output_tokens: 2673
+        cache_read_input_tokens: 109206
+        cache_creation_input_tokens: 32173
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    vote:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:48:02Z'
+      completed_at: '2026-09-27T09:48:02Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T09:48:02Z'
+      completed_at: '2026-09-27T09:48:02Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      spec_a: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/candidates/spec_a.json
+      spec_b: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/candidates/spec_b.json
+      spec_c: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/candidates/spec_c.json
+      compare_report: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/compare-report.json
+      vote_report: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/vote-report.json
+      spec_agreed: true
+      rate_spec: /home/dax/stage2-kit/factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3/rate-spec.json
+      carrier: sagar
+      contract_path: /home/dax/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_file: sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 152
+      _userid: dakshdhama0502
+      _timestamp: 20260927T094337968998Z
+      _run_descriptor: B1_3
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      spec_a: null
+      spec_b: null
+      spec_c: null
+      compare_report: null
+      vote_report: null
+      spec_agreed: null
+      rate_spec: null
+      carrier: sagar
+      contract_path: /home/dax/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_file: sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      shipments_path: /home/dax/stage2-kit/data/shipments.json
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      service_levels: express, standard
+      handling_flags: cold_chain, fragile, residential
+      shipment_count: 152
+      _userid: dakshdhama0502
+      _timestamp: 20260927T094337968998Z
+      _run_descriptor: B1_3
+      _flow_stem: contract-spec
+      _run_artefact_dir: factory/graph_runs/contract-spec/B1_3_dakshdhama0502_20260927T094337968998Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T09:43:38Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T09:43:56Z'
+  kind: node_entered
+  node: extract_a
+- t: '2026-09-27T09:44:55Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: dd86200d-0031-49d0-9a96-86f0b507ac15
+- t: '2026-09-27T09:44:55Z'
+  kind: node_entered
+  node: extract_b
+- t: '2026-09-27T09:47:02Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: eef0dbd9-b7eb-4431-ab8b-73dd9cc0046d
+- t: '2026-09-27T09:47:02Z'
+  kind: node_entered
+  node: compare
+- t: '2026-09-27T09:47:02Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-27T09:47:02Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-27T09:47:02Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: extract_c
+- t: '2026-09-27T09:47:02Z'
+  kind: node_entered
+  node: extract_c
+- t: '2026-09-27T09:48:02Z'
+  kind: validation_passed
+  node: extract_c
+  agent_session_id: 1eb6115f-de07-40d5-b662-942d35cc10e9
+- t: '2026-09-27T09:48:02Z'
+  kind: node_entered
+  node: vote
+- t: '2026-09-27T09:48:02Z'
+  kind: script_node_ran
+  node: vote
+  exit_code: 0
+- t: '2026-09-27T09:48:02Z'
+  kind: validation_passed
+  node: vote
+  agent_session_id: null
+- t: '2026-09-27T09:48:02Z'
+  kind: run_completed

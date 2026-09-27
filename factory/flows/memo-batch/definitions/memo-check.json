@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Memo batch check result",
+  "type": "object",
+  "required": ["_session_id", "batch_id", "attempt", "ok", "problems"],
+  "properties": { "ok": { "type": "boolean" }, "problems": { "type": "array", "items": { "type": "string" } } }
+}

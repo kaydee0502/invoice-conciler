@@ -1,0 +1,72 @@
+{
+  "_session_id": "fe503bc2-c3b9-4da5-8c47-b343b89bc88f",
+  "carrier": "falcon",
+  "contract_file": "falcon-freight.md",
+  "agreement_ref": "FF/BFC/2024-11",
+  "term": {"from": "2024-12-01", "to": "2026-11-30", "clause": "falcon-freight.md header (Term)"},
+  "services_offered": {"values": ["standard", "express"], "clause": "falcon-freight.md §2"},
+  "derived_quantities": [],
+  "charges": [
+    {
+      "id": "base_freight",
+      "label": "Base freight (per km by billed weight band)",
+      "clause": "falcon-freight.md §1",
+      "quote": "up to and including 500 kg: ₹18.00 per km; 501 kg to 2,000 kg: ₹24.00 per km. Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+      "when": null,
+      "amount": {"tiered": {"on": {"field": "billed_weight_kg"}, "tiers": [
+        {"lte": 500, "value": {"mul": [{"const": "18.00"}, {"field": "distance_km"}]}, "clause": "falcon-freight.md §1"},
+        {"gte": 501, "lte": 2000, "value": {"mul": [{"const": "24.00"}, {"field": "distance_km"}]}, "clause": "falcon-freight.md §1"},
+        {"gt": 2000, "out_of_card": true, "clause": "falcon-freight.md §1"}
+      ]}}
+    },
+    {
+      "id": "express_premium",
+      "label": "Express service premium (15% of base freight)",
+      "clause": "falcon-freight.md §2",
+      "quote": "Express service, where booked, carries a premium of 15% of the base freight.",
+      "when": {"field": "service_level", "op": "eq", "value": "express"},
+      "amount": {"percent": 15, "of": {"charge": "base_freight"}}
+    },
+    {
+      "id": "fuel_surcharge",
+      "label": "Fuel surcharge (12% of base freight plus express premium)",
+      "clause": "falcon-freight.md §3",
+      "quote": "A fuel surcharge of 12% applies to the freight charge (base freight plus express premium, where applicable).",
+      "when": null,
+      "amount": {"percent": 12, "of": {"add": [{"charge": "base_freight"}, {"charge": "express_premium"}]}}
+    },
+    {
+      "id": "residential_delivery",
+      "label": "Residential delivery (flat per consignment)",
+      "clause": "falcon-freight.md §4",
+      "quote": "Residential delivery (consignee address is a residence, or the booking is flagged residential): ₹250.00 flat per consignment.",
+      "when": {"field": "special_handling", "op": "contains", "value": "residential"},
+      "amount": {"const": "250.00"}
+    }
+  ],
+  "accessorials_policy": {"closed_list": true, "clause": "falcon-freight.md §5"},
+  "invoice_adjustments": [],
+  "document_rules": [
+    {"id": "credit_notes_permitted", "rule": "Carrier may issue credit notes correcting earlier invoices; a credit note references the original consignment note number and states the invoice it corrects.", "clause": "falcon-freight.md §8"},
+    {"id": "dispute_window_days", "rule": "Billing disputes must be raised within 45 days of invoice date; disputed line items are payable only on resolution, undisputed items remain due.", "value": 45, "clause": "falcon-freight.md §7"},
+    {"id": "other", "rule": "Carrier invoices fortnightly; payment is due 30 days from invoice date.", "value": {"invoice_frequency": "fortnightly", "payment_due_days": 30}, "clause": "falcon-freight.md §6"},
+    {"id": "other", "rule": "Any service outside the schedule requires the Customer's prior written agreement, evidenced by a rate confirmation referencing this agreement.", "clause": "falcon-freight.md §5"}
+  ],
+  "ambiguities": [
+    {
+      "id": "weight_band_gap_500_501",
+      "clause": "falcon-freight.md §1",
+      "description": "Weight bands are 'up to and including 500 kg' and '501 kg to 2,000 kg'; a billed weight strictly between 500 and 501 kg (e.g. 500.5 kg) is not covered by either band. Tiers kept as written.",
+      "when": {"all": [
+        {"field": "billed_weight_kg", "op": "gt", "value": 500},
+        {"field": "billed_weight_kg", "op": "lt", "value": 501}
+      ]}
+    },
+    {
+      "id": "residential_unflagged_address",
+      "clause": "falcon-freight.md §4",
+      "description": "The residential charge also applies where the consignee address is a residence even if the booking is not flagged residential. The shipment record exposes only the 'residential' special_handling flag, so unflagged consignments delivered to a residence cannot be identified; spec charges it only when the flag is present."
+    }
+  ],
+  "notes": "Base freight tiers on billed_weight_kg directly (contract states no minimum or chargeable-weight rule). Fuel surcharge applies to base + express premium only, not to the residential accessorial. No volume discount or invoice-level adjustment in the contract."
+}

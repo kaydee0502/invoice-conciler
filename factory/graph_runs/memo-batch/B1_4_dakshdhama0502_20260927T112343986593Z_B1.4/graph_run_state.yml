@@ -1,0 +1,270 @@
+metadata:
+  run_id: dc589c1f-65b9-4c6e-b81b-1bd2fe9a45af
+  userid: dakshdhama0502
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: memo-batch
+  flow_dot: factory/flows/memo-batch/memo-batch.dot
+  flow_dir: factory/flows/memo-batch
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: B1_4
+  timestamp: 20260927T112343986593Z
+  started_at: '2026-09-27T11:23:44Z'
+  completed_at: '2026-09-27T14:03:35Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z
+    fanout_node: memos_fanout
+    branch_id: B1.4
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:44Z'
+      completed_at: '2026-09-27T11:23:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    load_item:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T11:23:44Z'
+      completed_at: '2026-09-27T11:23:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    write_memos:
+      status: done
+      agent_id: null
+      agent_session_id: 522ad95f-ccfd-46df-a6ac-a51c63a17b36
+      started_at: '2026-09-27T11:23:44Z'
+      completed_at: '2026-09-27T14:03:34Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-27T14:03:34Z'
+      validation_feedback: null
+      summary: "Wrote 3 memos for alpine batch 1 (two escalations for 50 kg consignments\
+        \ AE-3005 and AE-3092 with undetermined rate under \xA71-\xA72, one dispute\
+        \ for the unapplied \xA75 volume discount on ALPINE-0726 seeking a \u20B9\
+        1,007.46 credit note); memos checker exited 0; manifest written."
+      notes: null
+      usage:
+        input_tokens: 6
+        output_tokens: 2515
+        cache_read_input_tokens: 105388
+        cache_creation_input_tokens: 21673
+        reasoning_tokens: 0
+        turns: 3
+        model: claude-opus-5-5
+      harness: claude-code
+      prior_attempts:
+      - agent_session_id: 43ee3207-9244-47b8-8f17-4bba26f27ef9
+        started_at: '2026-09-27T11:23:44Z'
+        completed_at: null
+        validation_passed: false
+        validation_feedback: 'factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+          schema violation: batch_id: 1 is not of type ''string'''
+        summary: null
+        notes: null
+        usage:
+          input_tokens: 6
+          output_tokens: 3007
+          cache_read_input_tokens: 105510
+          cache_creation_input_tokens: 22322
+          reasoning_tokens: 0
+          turns: 3
+          model: claude-opus-5-5
+      - agent_session_id: 4b263fce-eeb2-4c63-b721-8523e3ca0fba
+        started_at: '2026-09-27T11:23:44Z'
+        completed_at: null
+        validation_passed: false
+        validation_feedback: 'factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+          schema violation: batch_id: 1 is not of type ''string'''
+        summary: null
+        notes: null
+        usage:
+          input_tokens: 6
+          output_tokens: 2473
+          cache_read_input_tokens: 105520
+          cache_creation_input_tokens: 21768
+          reasoning_tokens: 0
+          turns: 3
+          model: claude-opus-5-5
+      branch_id: B1
+      branches: []
+      join_history: []
+    check_memos:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:03:35Z'
+      completed_at: '2026-09-27T14:03:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T14:03:35Z'
+      completed_at: '2026-09-27T14:03:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      carrier: alpine
+      brief_path: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-briefs/00001-alpine.json
+      memos_dir: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-batches/00001-alpine
+      contract_path: /home/dax/stage2-kit/data/contracts/alpine-express.md
+      recon_flow_dir: /home/dax/stage2-kit/factory/flows/freight-recon
+      recon_python: /home/dax/stage2-kit/orchestrator/.venv/bin/python
+      item_count: 3
+      memo_manifest: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json
+      memo_check: /home/dax/stage2-kit/factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-check.json
+      memo_next: done
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: 1
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T112343986593Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      carrier: null
+      brief_path: null
+      memos_dir: null
+      contract_path: null
+      recon_flow_dir: null
+      recon_python: null
+      item_count: null
+      memo_manifest: null
+      memo_check: null
+      memo_next: null
+      memo_attempt: '1'
+      memo_feedback: none (this is the first attempt)
+      batch_id: 1
+      memo_plan: /home/dax/stage2-kit/factory/graph_runs/freight-recon/recon-final_dakshdhama0502_20260927T111957915460Z/memo-plan.json
+      _userid: dakshdhama0502
+      _timestamp: 20260927T112343986593Z
+      _run_descriptor: B1_4
+      _flow_stem: memo-batch
+      _run_artefact_dir: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-27T11:23:44Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T11:23:44Z'
+  kind: node_entered
+  node: load_item
+- t: '2026-09-27T11:23:44Z'
+  kind: script_node_ran
+  node: load_item
+  exit_code: 0
+- t: '2026-09-27T11:23:44Z'
+  kind: validation_passed
+  node: load_item
+  agent_session_id: null
+- t: '2026-09-27T11:23:44Z'
+  kind: node_entered
+  node: write_memos
+- t: '2026-09-27T11:24:26Z'
+  kind: validation_failed
+  node: write_memos
+  feedback: 'factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+    schema violation: batch_id: 1 is not of type ''string'''
+- t: '2026-09-27T11:24:26Z'
+  kind: validation_feedback_sent
+  node: write_memos
+  message: 'factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+    schema violation: batch_id: 1 is not of type ''string'''
+- t: '2026-09-27T11:24:27Z'
+  kind: worker_respawned
+  node: write_memos
+  message: outcome=died; respawning once
+- t: '2026-09-27T11:25:03Z'
+  kind: validation_failed
+  node: write_memos
+  feedback: 'factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+    schema violation: batch_id: 1 is not of type ''string'''
+- t: '2026-09-27T11:25:03Z'
+  kind: run_stopped
+  node: write_memos
+  message: 'validation failed twice: factory/graph_runs/memo-batch/B1_4_dakshdhama0502_20260927T112343986593Z_B1.4/memo-manifest.json:
+    schema violation: batch_id: 1 is not of type ''string'''
+- t: '2026-09-27T14:02:52Z'
+  kind: run_resumed
+  node: write_memos
+  message: resuming unfinished agent node
+- t: '2026-09-27T14:03:34Z'
+  kind: validation_passed
+  node: write_memos
+  agent_session_id: 522ad95f-ccfd-46df-a6ac-a51c63a17b36
+- t: '2026-09-27T14:03:35Z'
+  kind: node_entered
+  node: check_memos
+- t: '2026-09-27T14:03:35Z'
+  kind: script_node_ran
+  node: check_memos
+  exit_code: 0
+- t: '2026-09-27T14:03:35Z'
+  kind: validation_passed
+  node: check_memos
+  agent_session_id: null
+- t: '2026-09-27T14:03:35Z'
+  kind: branch_auto_resolved
+  node: check_memos
+  chose: done
+- t: '2026-09-27T14:03:35Z'
+  kind: run_completed

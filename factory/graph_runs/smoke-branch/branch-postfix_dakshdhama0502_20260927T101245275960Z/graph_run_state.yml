@@ -1,0 +1,337 @@
+metadata:
+  run_id: a79cf09d-3300-4787-82d5-13f8639cac59
+  userid: dakshdhama0502
+  orchestrator_session_id: fecd768d-f0fd-4851-af68-ab69b2fedcaf
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: smoke-branch
+  flow_dot: factory/flows/smoke-branch/smoke-branch.dot
+  flow_dir: factory/flows/smoke-branch
+  repo_root: /home/dax/stage2-kit
+  supervision: afk
+  run_descriptor: branch-postfix
+  timestamp: 20260927T101245275960Z
+  started_at: '2026-09-27T10:12:45Z'
+  completed_at: '2026-09-27T10:12:46Z'
+  state: completed
+  parent_run: null
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:45Z'
+      completed_at: '2026-09-27T10:12:45Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    fork:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:45Z'
+      completed_at: '2026-09-27T10:12:45Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.1
+        status: done
+        subflow_run_dir: null
+        inline_root_node: worker_a
+        failure_reason: null
+      - branch_id: B1.2
+        status: done
+        subflow_run_dir: null
+        inline_root_node: worker_b
+        failure_reason: null
+      join_history: []
+    worker_a:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:45Z'
+      completed_at: '2026-09-27T10:12:45Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1.1
+      branches: []
+      join_history: []
+    worker_b:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:45Z'
+      completed_at: '2026-09-27T10:12:45Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1.2
+      branches: []
+      join_history: []
+    j:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:45Z'
+      completed_at: '2026-09-27T10:12:46Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history:
+      - sequence: 1
+        triggered_by: B1.1
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - branch_summary
+        fired_at: '2026-09-27T10:12:45Z'
+        triggered_from_node: worker_a
+      - sequence: 2
+        triggered_by: B1.2
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - branch_summary
+        fired_at: '2026-09-27T10:12:46Z'
+        triggered_from_node: worker_b
+    merge_notes:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:46Z'
+      completed_at: '2026-09-27T10:12:46Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-27T10:12:46Z'
+      completed_at: '2026-09-27T10:12:46Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_a_note.json
+      note_b: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_b_note.json
+      merged_note: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/merged_note.json
+      branch_summary:
+        B1.1:
+          note_path: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_a_note.json
+        B1.2:
+          note_path: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_b_note.json
+      _branches:
+      - branch_id: B1.1
+        source_node: worker_a
+        status: done
+      - branch_id: B1.2
+        source_node: worker_b
+        status: done
+    parent_node: null
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: null
+      note_b: null
+      merged_note: null
+      branch_summary: null
+    next_child: 2
+  B1.1:
+    branch_id: B1.1
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_a_note.json
+      note_b: null
+      merged_note: null
+      branch_summary: null
+    parent_node: fork
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: null
+      note_b: null
+      merged_note: null
+      branch_summary: null
+    next_child: 0
+  B1.2:
+    branch_id: B1.2
+    variables:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: null
+      note_b: /home/dax/stage2-kit/factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z/worker_b_note.json
+      merged_note: null
+      branch_summary: null
+    parent_node: fork
+    seed:
+      _userid: dakshdhama0502
+      _timestamp: 20260927T101245275960Z
+      _run_descriptor: branch-postfix
+      _flow_stem: smoke-branch
+      _run_artefact_dir: factory/graph_runs/smoke-branch/branch-postfix_dakshdhama0502_20260927T101245275960Z
+      _supervision: afk
+      _supervision_instructions: ''
+      note_a: null
+      note_b: null
+      merged_note: null
+      branch_summary: null
+    next_child: 0
+events:
+- t: '2026-09-27T10:12:45Z'
+  kind: run_started
+  by: dakshdhama0502
+- t: '2026-09-27T10:12:45Z'
+  kind: node_entered
+  node: fork
+- t: '2026-09-27T10:12:45Z'
+  kind: fork_fanned_out
+  node: fork
+  branches:
+  - worker_a
+  - worker_b
+  branch_ids:
+  - B1.1
+  - B1.2
+- t: '2026-09-27T10:12:45Z'
+  kind: script_node_ran
+  node: worker_a
+  exit_code: 0
+- t: '2026-09-27T10:12:45Z'
+  kind: validation_passed
+  node: worker_a
+  agent_session_id: null
+- t: '2026-09-27T10:12:45Z'
+  kind: script_node_ran
+  node: worker_b
+  exit_code: 0
+- t: '2026-09-27T10:12:45Z'
+  kind: validation_passed
+  node: worker_b
+  agent_session_id: null
+- t: '2026-09-27T10:12:45Z'
+  kind: join_arrival
+  join: j
+  from: worker_a
+  arrived:
+  - worker_a
+  - worker_b
+- t: '2026-09-27T10:12:45Z'
+  kind: reducer_fired
+  node: j
+  branch_id: B1.1
+  output_keys:
+  - branch_summary
+- t: '2026-09-27T10:12:45Z'
+  kind: join_arrival
+  join: j
+  from: worker_b
+  arrived:
+  - worker_a
+  - worker_b
+- t: '2026-09-27T10:12:46Z'
+  kind: reducer_fired
+  node: j
+  branch_id: B1.2
+  output_keys:
+  - branch_summary
+- t: '2026-09-27T10:12:46Z'
+  kind: join_fired
+  join: j
+  downstream: merge_notes
+  errored_branches: []
+- t: '2026-09-27T10:12:46Z'
+  kind: script_node_ran
+  node: merge_notes
+  exit_code: 0
+- t: '2026-09-27T10:12:46Z'
+  kind: validation_passed
+  node: merge_notes
+  agent_session_id: null
+- t: '2026-09-27T10:12:46Z'
+  kind: run_completed

@@ -1,0 +1,31 @@
+# Inputs from the parent (subflow inputs=): batch_id (the fanout item) and
+# memo_plan (the plan file); load_item resolves the rest.
+output_schemas:
+  load_outputs:
+    files: []
+    required_variables: [carrier, brief_path, memos_dir, contract_path, recon_flow_dir, recon_python]
+  write_outputs:
+    files:
+      - { name: memo_manifest, path: "{_run_artefact_dir}/memo-manifest.json", definition: memo-manifest }
+    sets_variables: { memo_manifest: memo_manifest }
+  check_outputs:
+    files:
+      - { name: memo_check, path: "{_run_artefact_dir}/memo-check.json", definition: memo-check }
+    sets_variables: { memo_check: memo_check }
+    required_variables: [memo_next]
+
+variables:
+  batch_id:       { type: string }
+  memo_plan:      { type: string }
+  carrier:        { type: string }
+  brief_path:     { type: string }
+  memos_dir:      { type: string }
+  contract_path:  { type: string }
+  recon_flow_dir: { type: string }
+  recon_python:   { type: string }
+  item_count:     { type: string }
+  memo_manifest:  { type: path }
+  memo_check:     { type: path }
+  memo_next:      { type: string }
+  memo_attempt:   { type: string, default: "1" }
+  memo_feedback:  { type: string, default: "none (this is the first attempt)" }

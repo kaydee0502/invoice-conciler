@@ -1,0 +1,86 @@
+{
+  "_session_id": "7df3fee1-5f89-4809-ac11-252e79d45386",
+  "carrier": "alpine",
+  "contract_file": "alpine-express.md",
+  "agreement_ref": "AEL/BFC/2025-03",
+  "term": {
+    "from": "2025-03-01",
+    "to": "2027-02-28",
+    "clause": "alpine-express.md header (Term)"
+  },
+  "services_offered": {
+    "values": ["standard"],
+    "clause": "alpine-express.md §3"
+  },
+  "derived_quantities": [
+    {
+      "id": "chargeable_weight_kg",
+      "description": "Higher of actual (billed) weight and the 25 kg minimum chargeable weight.",
+      "expr": {"max": [{"field": "billed_weight_kg"}, {"const": 25}]},
+      "clause": "alpine-express.md §1"
+    }
+  ],
+  "charges": [
+    {
+      "id": "base_freight",
+      "label": "Freight charge on chargeable weight",
+      "clause": "alpine-express.md §1, §2",
+      "when": null,
+      "amount": {
+        "tiered": {
+          "on": {"qty": "chargeable_weight_kg"},
+          "tiers": [
+            {
+              "lt": 50,
+              "value": {"mul": [{"qty": "chargeable_weight_kg"}, {"const": 9.50}]},
+              "clause": "alpine-express.md §2 (under 50 kg)"
+            },
+            {
+              "gt": 50,
+              "value": {"mul": [{"qty": "chargeable_weight_kg"}, {"const": 8.25}]},
+              "clause": "alpine-express.md §2 (over 50 kg)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "fragile_handling",
+      "label": "Protected-handling fee for fragile consignments",
+      "clause": "alpine-express.md §4",
+      "when": {"field": "special_handling", "op": "contains", "value": "fragile"},
+      "amount": {"const": 150.00}
+    }
+  ],
+  "accessorials_policy": {
+    "closed_list": false,
+    "clause": "alpine-express.md §1-§4 (no statement that unlisted charges are not payable)"
+  },
+  "invoice_adjustments": [
+    {
+      "id": "volume_incentive_discount",
+      "label": "5% discount on invoice total for months with more than 12 consignments",
+      "kind": "percent_of_invoice_total",
+      "percent": -5,
+      "when": {"metric": "consignments_in_calendar_month", "op": "gt", "value": 12},
+      "clause": "alpine-express.md §5",
+      "quote": "In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice."
+    }
+  ],
+  "document_rules": [],
+  "ambiguities": [
+    {
+      "id": "weight_band_gap_at_50kg",
+      "clause": "alpine-express.md §2",
+      "description": "The rate schedule gives a per-kg rate for consignments 'under 50 kg' (lt 50) and 'over 50 kg' (gt 50). Chargeable weight of exactly 50 kg falls in neither band and is left undetermined by the contract text.",
+      "when": {"qty": "chargeable_weight_kg", "op": "eq", "value": 50}
+    },
+    {
+      "id": "express_service_not_priced",
+      "clause": "alpine-express.md §3",
+      "description": "The agreement states all bookings travel on standard service and express products are not offered. The contract defines no rate for a shipment recorded with service_level=express under this agreement.",
+      "when": {"field": "service_level", "op": "eq", "value": "express"}
+    }
+  ],
+  "notes": "Two ambiguities recorded: (1) the freight rate table has a literal gap at exactly 50 kg chargeable weight between the 'under 50 kg' and 'over 50 kg' bands — left uncovered per instructions rather than guessed; (2) the contract explicitly excludes express service, so express-flagged shipments have no defined rate. special_handling values cold_chain and residential are not mentioned anywhere in the contract, so no charge is encoded for them (only 'fragile' has a defined handling fee in §4); this is a straightforward absence, not treated as an ambiguity. No document_rules (credit notes, unmatched lines, dispute windows) are stated in this contract, so that list is empty."
+}

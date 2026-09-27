@@ -1,0 +1,4 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "title": "Memo item index", "type": "object",
+  "required": ["_session_id", "stage", "memo_items", "memo_item_count"],
+  "properties": { "memo_items": { "type": "array", "items": { "type": "object",
+    "required": ["item_id", "kind", "carrier", "memo_file", "report_entry"] } } } }

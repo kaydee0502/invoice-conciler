@@ -1,0 +1,336 @@
+{
+  "batch_id": "falcon-1",
+  "carrier": "falcon",
+  "contract_path": "/home/dax/stage2-kit/data/contracts/falcon-freight.md",
+  "items": [
+    {
+      "item_id": "line:FALCON-2026-07A#11",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-07A__FF-8011.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-07A",
+        "consignment_ref": "FF-8011",
+        "shipment_id": "SH-4011",
+        "billed_amount": 22704.0,
+        "expected_amount": 21504.0,
+        "delta": 1200.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹1,200.00: billed ₹22,704.00, contract amount ₹21,504.00 (Base freight (per km by billed weight band) ₹19,200.00 + Fuel surcharge (12% of base freight plus express premium) ₹2,304.00; falcon-freight.md §1, §3, §5; shipment SH-4011: 700 kg, 800 km, standard, handling none). 'Detention charge at consignee' (₹1,200.00) is not a charge in the contract's schedule, and the contract excludes unlisted charges (falcon-freight.md §5).",
+        "contract_clause": "falcon-freight.md §1, §3, §5"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "UNLISTED_NOT_PAYABLE",
+          "amount": 1200.0,
+          "clause": "falcon-freight.md §5",
+          "detail": "'Detention charge at consignee' (₹1,200.00) is not a charge in the contract's schedule, and the contract excludes unlisted charges (falcon-freight.md §5)"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "base_freight",
+          "label": "Base freight (per km by billed weight band)",
+          "amount": 19200.0,
+          "clause": "falcon-freight.md §1"
+        },
+        {
+          "id": "fuel_surcharge",
+          "label": "Fuel surcharge (12% of base freight plus express premium)",
+          "amount": 2304.0,
+          "clause": "falcon-freight.md §3"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "Detention charge at consignee",
+          "amount": 1200.0
+        },
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 21504.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        1200.0,
+        2304.0,
+        19200.0,
+        21504.0,
+        22704.0
+      ]
+    },
+    {
+      "item_id": "line:FALCON-2026-07B#8",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-07B__FF-8003.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-07B",
+        "consignment_ref": "FF-8003",
+        "shipment_id": "SH-4003",
+        "billed_amount": 7392.0,
+        "expected_amount": 0.0,
+        "delta": 7392.0,
+        "disposition": "dispute",
+        "justification": "Duplicate billing: FF-8003 (shipment SH-4003) was already billed on FALCON-2026-07A (line FALCON-2026-07A#3). The full ₹7,392.00 is disputed.",
+        "contract_clause": null,
+        "notes": "anomaly DUPLICATE_REF_ACROSS_DOCS: consignment FF-8003 already billed on FALCON-2026-07A#3"
+      },
+      "rule": "R_DUPLICATE",
+      "reasons": [
+        {
+          "code": "DUPLICATE_BILLING",
+          "detail": "shipment SH-4003 (FF-8003) is already billed on FALCON-2026-07A#3; a consignment is payable once"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 7392.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        7392.0
+      ]
+    },
+    {
+      "item_id": "line:FALCON-2026-08B#4",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-08B__FF-8057.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-08B",
+        "consignment_ref": "FF-8057",
+        "shipment_id": "SH-4057",
+        "billed_amount": 4968.0,
+        "expected_amount": 4838.4,
+        "delta": 129.6,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹129.60: billed ₹4,968.00, contract amount ₹4,838.40 (Base freight (per km by billed weight band) ₹4,320.00 + Fuel surcharge (12% of base freight plus express premium) ₹518.40; falcon-freight.md §1, §3; shipment SH-4057: 1800 kg, 180 km, standard, handling none). 'Freight incl. fuel surcharge' billed at ₹4,968.00; the contract gives ₹4,838.40 for Base freight (per km by billed weight band) ₹4,320.00 + Fuel surcharge (12% of base freight plus express premium) ₹518.40.",
+        "contract_clause": "falcon-freight.md §1, §3"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "AMOUNT_DIFFERS",
+          "amount": 129.6,
+          "clause": "falcon-freight.md §1, §3",
+          "detail": "'Freight incl. fuel surcharge' billed at ₹4,968.00; the contract gives ₹4,838.40 for Base freight (per km by billed weight band) ₹4,320.00 + Fuel surcharge (12% of base freight plus express premium) ₹518.40"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "base_freight",
+          "label": "Base freight (per km by billed weight band)",
+          "amount": 4320.0,
+          "clause": "falcon-freight.md §1"
+        },
+        {
+          "id": "fuel_surcharge",
+          "label": "Fuel surcharge (12% of base freight plus express premium)",
+          "amount": 518.4,
+          "clause": "falcon-freight.md §3"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 4968.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        129.6,
+        518.4,
+        4320.0,
+        4838.4,
+        4968.0
+      ]
+    },
+    {
+      "item_id": "line:FALCON-2026-08B#14",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-08B__FF-8067.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-08B",
+        "consignment_ref": "FF-8067",
+        "shipment_id": "SH-4067",
+        "billed_amount": 7901.2,
+        "expected_amount": 6701.2,
+        "delta": 1200.0,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹1,200.00: billed ₹7,901.20, contract amount ₹6,701.20 (Base freight (per km by billed weight band) ₹5,760.00 + Fuel surcharge (12% of base freight plus express premium) ₹691.20 + Residential delivery (flat per consignment) ₹250.00; falcon-freight.md §1, §3, §4, §5; shipment SH-4067: 1800 kg, 240 km, standard, handling ['residential']). 'Detention charge at consignee' (₹1,200.00) is not a charge in the contract's schedule, and the contract excludes unlisted charges (falcon-freight.md §5).",
+        "contract_clause": "falcon-freight.md §1, §3, §4, §5"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "UNLISTED_NOT_PAYABLE",
+          "amount": 1200.0,
+          "clause": "falcon-freight.md §5",
+          "detail": "'Detention charge at consignee' (₹1,200.00) is not a charge in the contract's schedule, and the contract excludes unlisted charges (falcon-freight.md §5)"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "base_freight",
+          "label": "Base freight (per km by billed weight band)",
+          "amount": 5760.0,
+          "clause": "falcon-freight.md §1"
+        },
+        {
+          "id": "fuel_surcharge",
+          "label": "Fuel surcharge (12% of base freight plus express premium)",
+          "amount": 691.2,
+          "clause": "falcon-freight.md §3"
+        },
+        {
+          "id": "residential_delivery",
+          "label": "Residential delivery (flat per consignment)",
+          "amount": 250.0,
+          "clause": "falcon-freight.md §4"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "Residential delivery",
+          "amount": 250.0
+        },
+        {
+          "label": "Detention charge at consignee",
+          "amount": 1200.0
+        },
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 6451.2
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        250.0,
+        691.2,
+        1200.0,
+        5760.0,
+        6451.2,
+        6701.2,
+        7901.2
+      ]
+    },
+    {
+      "item_id": "line:FALCON-2026-09A#7",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-09A__FF-8078.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-09A",
+        "consignment_ref": "FF-8078",
+        "shipment_id": "SH-4078",
+        "billed_amount": 14878.0,
+        "expected_amount": 14496.4,
+        "delta": 381.6,
+        "disposition": "dispute",
+        "justification": "Overbilled by ₹381.60: billed ₹14,878.00, contract amount ₹14,496.40 (Base freight (per km by billed weight band) ₹12,720.00 + Fuel surcharge (12% of base freight plus express premium) ₹1,526.40 + Residential delivery (flat per consignment) ₹250.00; falcon-freight.md §1, §3, §4; shipment SH-4078: 1500 kg, 530 km, standard, handling ['residential']). 'Freight incl. fuel surcharge' billed at ₹14,628.00; the contract gives ₹14,246.40 for Base freight (per km by billed weight band) ₹12,720.00 + Fuel surcharge (12% of base freight plus express premium) ₹1,526.40.",
+        "contract_clause": "falcon-freight.md §1, §3, §4"
+      },
+      "rule": "R_OVERBILLED",
+      "reasons": [
+        {
+          "code": "AMOUNT_DIFFERS",
+          "amount": 381.6,
+          "clause": "falcon-freight.md §1, §3",
+          "detail": "'Freight incl. fuel surcharge' billed at ₹14,628.00; the contract gives ₹14,246.40 for Base freight (per km by billed weight band) ₹12,720.00 + Fuel surcharge (12% of base freight plus express premium) ₹1,526.40"
+        }
+      ],
+      "expected_charges": [
+        {
+          "id": "base_freight",
+          "label": "Base freight (per km by billed weight band)",
+          "amount": 12720.0,
+          "clause": "falcon-freight.md §1"
+        },
+        {
+          "id": "fuel_surcharge",
+          "label": "Fuel surcharge (12% of base freight plus express premium)",
+          "amount": 1526.4,
+          "clause": "falcon-freight.md §3"
+        },
+        {
+          "id": "residential_delivery",
+          "label": "Residential delivery (flat per consignment)",
+          "amount": 250.0,
+          "clause": "falcon-freight.md §4"
+        }
+      ],
+      "billed_components": [
+        {
+          "label": "Residential delivery",
+          "amount": 250.0
+        },
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 14628.0
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        250.0,
+        381.6,
+        1526.4,
+        12720.0,
+        14246.4,
+        14496.4,
+        14628.0,
+        14878.0
+      ]
+    },
+    {
+      "item_id": "line:FALCON-2026-09A#12",
+      "kind": "line",
+      "carrier": "falcon",
+      "memo_file": "FALCON-2026-09A__FF-8055.md",
+      "report_entry": {
+        "invoice": "FALCON-2026-09A",
+        "consignment_ref": "FF-8055",
+        "shipment_id": "SH-4055",
+        "billed_amount": 4838.4,
+        "expected_amount": 0.0,
+        "delta": 4838.4,
+        "disposition": "dispute",
+        "justification": "Duplicate billing: FF-8055 (shipment SH-4055) was already billed on FALCON-2026-08B (line FALCON-2026-08B#2). The full ₹4,838.40 is disputed.",
+        "contract_clause": null,
+        "notes": "anomaly DUPLICATE_REF_ACROSS_DOCS: consignment FF-8055 already billed on FALCON-2026-08B#2"
+      },
+      "rule": "R_DUPLICATE",
+      "reasons": [
+        {
+          "code": "DUPLICATE_BILLING",
+          "detail": "shipment SH-4055 (FF-8055) is already billed on FALCON-2026-08B#2; a consignment is payable once"
+        }
+      ],
+      "expected_charges": [],
+      "billed_components": [
+        {
+          "label": "Freight incl. fuel surcharge",
+          "amount": 4838.4
+        }
+      ],
+      "corrects_line_keys": null,
+      "hints": [],
+      "allowed_amounts": [
+        0.0,
+        4838.4
+      ]
+    }
+  ]
+}
