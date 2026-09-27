@@ -69,24 +69,5 @@ class ExtractionPromptTest(unittest.TestCase):
         self.assertEqual(sum(b["item_count"] for b in batches), n)
 
 
-class FanoutJoinTest(unittest.TestCase):
-    """flowstate only marks a dynamic_fanout's join ready_to_fire from inside the
-    join's reducer hook (subflow.py): a join without a reducer is never fired and
-    the run stalls with every branch done. Every such join needs a reducer."""
-
-    def test_fanout_joins_have_reducers(self):
-        import sys
-        sys.path.insert(0, str(FLOWS.parents[1] / "orchestrator" / "lib"))
-        from flowstate.parser import load_flow
-        for dot in FLOWS.glob("*/*.dot"):
-            g = load_flow(dot).graph
-            for f in [n for n in g.nodes if n.runner == "dynamic_fanout"]:
-                for e in g.edges_from(f.template_node):
-                    j = g.node(e.target)
-                    if j.runner == "join":
-                        self.assertTrue(j.reducer_script and j.summary_var,
-                                        f"{dot.name}: join {j.name} after fanout {f.name} has no reducer")
-
-
 if __name__ == "__main__":
     unittest.main()

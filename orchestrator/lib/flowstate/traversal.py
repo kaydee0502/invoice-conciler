@@ -1709,9 +1709,19 @@ def _fire_reducer(
 
     for k, v in state.variables.items():
         _set_var_env(k, v)
+    # The summary_var is reducer-owned: its accumulated value lives in the
+    # parent scope, while the branch scope still holds the snapshot taken when
+    # the branch was created. Letting the branch win here fed every arrival
+    # that stale snapshot, so a reducer that accumulates (a count, a dict of
+    # arrivals) saw its initial value each time and only the last arrival
+    # survived. Same exclusion _fire_join applies when merging (reducer-owned
+    # keys never come from a branch delta).
+    summary_var = flow.graph.node(join_name).summary_var
     branch_scope = state.branch_scopes.get(triggering_branch_id)
     if branch_scope is not None:
         for k, v in branch_scope.variables.items():
+            if k == summary_var:
+                continue
             _set_var_env(k, v)
 
     # NOTE: This subprocess runs INSIDE the parent's state_lock (held by

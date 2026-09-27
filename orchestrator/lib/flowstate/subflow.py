@@ -442,7 +442,14 @@ def complete_subflow(
     # where _fire_reducer is called serially inside `advance()`. This keeps
     # state mutations atomic relative to other state_lock holders on the
     # same parent run dir.
-    if reducer_node.reducer_script and reducer_node.summary_var:
+    has_reducer = bool(reducer_node.reducer_script and reducer_node.summary_var)
+    # The downstream join of a dynamic_fanout must become ready_to_fire once
+    # every branch is terminal, whether or not it declares a reducer.
+    # Previously this flip lived inside the reducer branch, so a fanout join
+    # WITHOUT a reducer was never fired and the parent blocked at it forever
+    # with every child done.
+    fanout_join = node_def.runner == "dynamic_fanout" and reducer_node.runner == "join"
+    if has_reducer or fanout_join:
         from flowstate.traversal import _fire_reducer
         with state_lock(parent_path):
             parent = RunState.load(parent_path)
@@ -455,11 +462,12 @@ def complete_subflow(
             # hit this because _record_join_arrival lands on the join via
             # advance, which creates the PhaseState as a side effect.
             parent.phases.setdefault(reducer_node.name, PhaseState(status="in_progress"))
-            _fire_reducer(
-                parent, flow,
-                join_name=reducer_node.name,
-                triggering_branch_id=branch_id,
-            )
+            if has_reducer:
+                _fire_reducer(
+                    parent, flow,
+                    join_name=reducer_node.name,
+                    triggering_branch_id=branch_id,
+                )
             # If every fanout branch is now in a terminal status, flip the
             # join to ready_to_fire so a later advance can fire it downstream.
             # The push hook is the only place this transition can happen for
@@ -470,12 +478,18 @@ def complete_subflow(
             # branch_is_terminal = {done, error}: same predicate the fanout
             # completion path uses. idle is NOT terminal — the branch is
             # fielding a human prompt and will resume. Spec D1.
-            if fanout_phase is not None and all(
-                branch_is_terminal(b.status) for b in fanout_phase.branches
+            join_phase = parent.phases[reducer_node.name]
+            if (
+                fanout_join
+                and fanout_phase is not None
+                and all(branch_is_terminal(b.status) for b in fanout_phase.branches)
+                # A repeated completion push (e.g. `complete-subflow` re-run
+                # after the join already fired) must not re-arm the join.
+                and join_phase.status not in ("ready_to_fire", "done")
             ):
-                parent.phases[reducer_node.name].status = "ready_to_fire"
+                join_phase.status = "ready_to_fire"
                 parent.append_event("join_ready_to_fire_after_fanout", {
                     "join": reducer_node.name,
                     "fanout": subflow_node_name,
                 })
-                parent.save()
+            parent.save()

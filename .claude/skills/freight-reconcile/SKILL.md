@@ -147,11 +147,12 @@ they are listed here so the orchestrator can recognise a violation.
   Both are fixed (see DESIGN.md), with regression tests in
   `orchestrator/tests/`. Conditions on a join's outgoing edge are still
   impossible, because the parser rejects conditions on a single outgoing edge.
-- **Every join after a `dynamic_fanout` needs a reducer.** flowstate marks the
-  join ready to fire only inside the reducer hook, so without one the run stalls
-  with all branches done (`tests/test_flows.py` enforces this). If a join is
-  stuck anyway, `flowstate complete-subflow --branch <id> <parent_run_dir>`
-  re-fires the hook.
+- **Fixed in flowstate:** a join after a `dynamic_fanout` used to fire only if
+  it had a reducer, and an accumulating reducer saw each branch's stale copy of
+  its summary variable. Both are fixed (see DESIGN.md, tests in
+  `orchestrator/tests/test_fanout_join.py`). If a parent ever looks stuck after
+  all children end, `flowstate complete-subflow --branch <id> <parent_run_dir>`
+  re-fires that branch's completion hook, and it is safe to repeat.
 - Subflow children of a `dynamic_fanout` push their outputs and fire the
   join reducer themselves on completion. After the last child ends, one
   `advance` on the parent passes through the template node and fires the join.

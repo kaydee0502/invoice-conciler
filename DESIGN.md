@@ -146,16 +146,43 @@ run dir instead of a variable, and `publish` takes memo dirs from the memo
 plan. `tests/test_flows.py` asserts the memo fanout list fits for 100,000
 non-accept items (batch size grows past about 20,000 rather than the id list).
 
-### flowstate: a dynamic_fanout's join without a reducer never fires (no change; designed around)
+### flowstate: a dynamic_fanout's join without a reducer never fired (`orchestrator/lib/flowstate/subflow.py`)
 
-`subflow.py` marks a dynamic_fanout's join `ready_to_fire` only from inside
-the join's reducer hook (`if reducer_node.reducer_script and
-reducer_node.summary_var:`). A join without a reducer is never fired, and the
-run stalls with every branch done (`recon-final`: `memos_join` blocked after
-all three memo batches finished). `memos_join` now has a small reducer that
-counts completed batches, and `tests/test_flows.py` requires a reducer on
-every join fed by a dynamic_fanout. The right machinery fix is to move the
-ready-to-fire flip out of the reducer branch; left for a human decision.
+**Found:** in `recon-final`, `memos_join` blocked after all three memo batches
+finished. `complete_subflow` marked a dynamic_fanout's downstream join
+`ready_to_fire` only inside `if reducer_node.reducer_script and
+reducer_node.summary_var:`, so a join without a reducer was never fired and
+the run stalled with every branch done.
+
+**Change:** the ready-to-fire check now runs for any join after a
+dynamic_fanout, with or without a reducer, under the same lock; the reducer
+still fires only when declared. A new guard stops a repeated completion push
+(for example a second `complete-subflow` call) from re-arming a join that is
+already `ready_to_fire` or `done`. The old code could also mark a plain
+subflow node `ready_to_fire`; nothing reads that status for a non-join, so
+the check is now limited to joins.
+
+### flowstate: accumulating reducers saw a stale value (`orchestrator/lib/flowstate/traversal.py`, `_fire_reducer`)
+
+**Found** while testing the fix above: a reducer that counts arrivals ended
+at 1 with 2 branches, and `recon-submission` (run before this fix) recorded
+`memo_batches_done: 1` for 3 batches. `_fire_reducer` builds the reducer's
+environment from parent variables and then branch variables, with the branch
+winning. The branch scope still holds the summary variable's value from when
+the branch was created, so every arrival saw the initial value. `_fire_join`
+already excludes reducer-owned keys for exactly this reason when it merges;
+the reducer environment did not.
+
+**Change:** the join's `summary_var` is no longer taken from the branch
+scope, so each arrival sees the accumulated value. Our spec reducer was never
+affected (it writes a file); the memo batch count now comes out right.
+
+**Verification (both):** `orchestrator/tests/test_fanout_join.py` drives a
+real dynamic_fanout with script-only children through the CLI: a join
+without a reducer fires and the run completes; a counting reducer reaches 2
+with 2 branches; a repeated `complete-subflow` does not re-arm a fired join.
+All three fail against flowstate with the two changes reverted and pass with
+them. `smoke-branch` still collects both branches.
 
 ### agentctl: a worker cannot be sent validation feedback
 
@@ -197,8 +224,9 @@ feedback appended to the prompt**, once, and logs `worker_respawned` /
   about 30 MB at 50×; at 500×, sharding them per carrier would be the next step.
 - **Resumability.** `drive-branch.sh` resumes a stopped child by respawning
   its unfinished agent node; `recon-final` was completed that way after the
-  fix. When a join stalls, `flowstate complete-subflow --branch <id>` re-fires
-  the completion hook.
+  fix. `flowstate complete-subflow --branch <id>` re-fires a branch's
+  completion hook if a parent ever looks stuck; with the join fix it is safe
+  to repeat.
 - Contract extraction variance: across `specs-try1` and `specs-try2`, the
   two extractions of the Sagar contract disagreed once (on `closed_list`)
   and agreed once. The tie-break resolved try1 to the same value try2

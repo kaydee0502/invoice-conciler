@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
-"""Join reducer for memos_join: count completed memo batches (audit figure).
-
-Also load-bearing: flowstate only marks a dynamic_fanout's join ready to fire
-from inside its reducer hook, so a join without a reducer is never fired (see
-DESIGN.md, machinery notes).
-"""
+"""Join reducer for memos_join: count completed memo batches (an audit figure
+that should equal the number of batches in memo-plan.json)."""
 import json
 import os
 import sys
